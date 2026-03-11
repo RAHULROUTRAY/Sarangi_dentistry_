@@ -58,12 +58,12 @@ export default function ProcedureDetail() {
             <p className="text-lg text-[#022431]/80 leading-relaxed mb-8">
               {procedure.longDescription}
             </p>
-            <a 
-              href="#book"
+            <Link 
+              to="/book-appointment"
               className="inline-block px-8 py-4 bg-[#1a627f] text-white font-mono font-bold rounded-lg hover:bg-[#011923] transition-colors duration-300 shadow-lg shadow-[#1a627f]/30 hover:-translate-y-1"
             >
               BOOK APPOINTMENT
-            </a>
+            </Link>
           </div>
         </motion.div>
 
@@ -174,9 +174,12 @@ export default function ProcedureDetail() {
           <p className="text-lg text-[#e8f1f5] mb-10 max-w-2xl mx-auto relative z-10">
             Schedule your appointment today and experience personalized, high-quality dental care from our expert team.
           </p>
-          <button className="relative z-10 bg-white text-[#1a627f] font-bold font-mono px-10 py-4 rounded-xl hover:bg-[#f5f9eb] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1">
+          <Link 
+            to="/book-appointment"
+            className="relative z-10 inline-block bg-white text-[#1a627f] font-bold font-mono px-10 py-4 rounded-xl hover:bg-[#f5f9eb] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+          >
             BOOK APPOINTMENT NOW
-          </button>
+          </Link>
         </motion.div>
 
       </div>

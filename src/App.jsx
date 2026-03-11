@@ -15,6 +15,8 @@ import BlogPost from './components/BlogPost';
 import AboutPage from './components/AboutPage';
 import Procedures from './components/Procedures';
 import ProcedureDetail from './components/ProcedureDetail';
+import ContactPage from './components/ContactPage';
+import BookAppointmentPage from './components/BookAppointmentPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -70,6 +72,8 @@ function App() {
           <Route path="/services" element={<Page3 />} />
           <Route path="/procedure" element={<Procedures />} />
           <Route path="/procedure/:id" element={<ProcedureDetail />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/book-appointment" element={<BookAppointmentPage />} />
         </Routes>
         <Footer />
       </main>

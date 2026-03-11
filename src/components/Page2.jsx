@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 const ParallaxCard = ({ card }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -63,15 +64,16 @@ const ParallaxCard = ({ card }) => {
             {card.desc}
           </p>
           <div className="flex justify-center lg:justify-start">
-            <button
+            <Link
+              to="/book-appointment"
               className="
                 px-[18px] py-[10px] bg-[#1a627f] text-[#f5f9eb]
                 text-[12px] tracking-[1px] uppercase rounded-[20px]
-                hover:bg-[#114255] transition-colors
+                hover:bg-[#114255] transition-colors inline-block text-center
               "
             >
               BOOK APPOINTMENT
-            </button>
+            </Link>
           </div>
         </div>
       </div>

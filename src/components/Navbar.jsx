@@ -8,6 +8,7 @@ const navItems = [
   { name: 'Blog', path: '/blog' },
   { name: 'About', path: '/about' },
   { name: 'Procedure', path: '/procedure', hasDropdown: true },
+  { name: 'Contact', path: '/contact' },
 ]
 
 export default function Navbar() {
@@ -86,9 +87,15 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+            <Link
+              to="/book-appointment"
+              className="ml-4 md:ml-6 px-6 py-2.5 bg-[#1a627f] text-white font-mono font-bold rounded-xl hover:bg-[#011923] transition-colors duration-300 shadow-lg shadow-[#1a627f]/20 hover:-translate-y-0.5"
+            >
+              BOOK APPOINTMENT
+            </Link>
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-4">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-[#022431] p-2 rounded-lg hover:bg-[#dfe8ec] transition-colors"
@@ -168,6 +175,15 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
           ))}
+          <div className="mt-8 mb-6">
+            <Link
+              to="/book-appointment"
+              onClick={() => setIsOpen(false)}
+              className="w-full block text-center px-6 py-4 bg-[#1a627f] text-white font-mono font-bold rounded-xl hover:bg-[#f5f9eb] hover:text-[#1a627f] transition-all duration-300 shadow-lg shadow-[#1a627f]/20"
+            >
+              BOOK APPOINTMENT
+            </Link>
+          </div>
         </div>
       </div>
 
