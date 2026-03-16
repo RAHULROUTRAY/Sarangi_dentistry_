@@ -20,8 +20,8 @@ export default function BlogPost() {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-[#f5f9eb] text-[#022431]">
                 <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-                <p className="text-[#1a627f] mb-8">The blog post you're looking for doesn't exist.</p>
-                <Link to="/blog" className="px-6 py-3 bg-[#1a627f] text-[#f5f9eb] font-bold rounded-full hover:bg-[#056c94] transition">
+                <p className="text-[#03966a] mb-8">The blog post you're looking for doesn't exist.</p>
+                <Link to="/blog" className="px-6 py-3 bg-[#03966a] text-[#f5f9eb] font-bold rounded-full hover:bg-[#056c94] transition">
                     Return to Blog
                 </Link>
             </div>
@@ -29,10 +29,10 @@ export default function BlogPost() {
     }
 
     return (
-        <article className="min-h-screen bg-[linear-gradient(180deg,_#f5f9eb_0%,_#e7f0e8_28%,_#cedfd8_55%,_#9ab4ad_78%,_#5f7f7b_100%)] text-[#011923] pt-24 pb-32">
+        <article className="min-h-screen bg-[linear-gradient(180deg,_#f5f9eb_0%,_#e7f0e8_28%,_#cedfd8_55%,_#9ab4ad_78%,_#5f7f7b_100%)] text-[#03966a] pt-24 pb-32">
             {/* Blog Hero Header */}
             <div className="max-w-4xl mx-auto px-6 lg:px-0 text-center mb-16 mt-8">
-                <div className="inline-block px-4 py-1.5 bg-white/50 border border-[#1a627f] text-[#1a627f] rounded-full text-sm font-bold tracking-widest uppercase mb-6">
+                <div className="inline-block px-4 py-1.5 bg-white/50 border border-[#03966a] text-[#03966a] rounded-full text-sm font-bold tracking-widest uppercase mb-6">
                     {blog.category}
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight">
@@ -55,7 +55,7 @@ export default function BlogPost() {
 
             {/* Blog Content Body */}
             <div className="max-w-3xl mx-auto px-6 lg:px-0">
-                <div className="prose prose-lg prose-headings:text-[#0f1510] prose-a:text-[#1a627f] hover:prose-a:text-[#056c94] prose-img:rounded-2xl max-w-none 
+                <div className="prose prose-lg prose-headings:text-[#0f1510] prose-a:text-[#03966a] hover:prose-a:text-[#056c94] prose-img:rounded-2xl max-w-none 
                         prose-p:text-[#161d16] prose-p:leading-relaxed prose-li:text-[#161d16]">
                     <ReactMarkdown>
                         {blog.content}
@@ -64,7 +64,7 @@ export default function BlogPost() {
 
                 {/* Author Bio / Footer */}
                 <div className="mt-24 pt-12 border-t border-[#c0d2d8] flex flex-col md:flex-row items-center md:items-start gap-8">
-                    <div className="w-20 h-20 rounded-full bg-[#1a627f] flex items-center justify-center text-2xl font-black text-[#f5f9eb] shrink-0">
+                    <div className="w-20 h-20 rounded-full bg-[#03966a] flex items-center justify-center text-2xl font-black text-[#f5f9eb] shrink-0">
                         SD
                     </div>
                     <div className="text-center md:text-left">
@@ -72,7 +72,7 @@ export default function BlogPost() {
                         <p className="text-[#161d16] mb-4">
                             Dedicated to providing top-tier oral care, modern dental therapy, and educating our community on the importance of lifetime dental health.
                         </p>
-                        <Link to="/blog" className="text-[#1a627f] font-bold hover:text-[#056c94] transition flex items-center justify-center md:justify-start gap-2">
+                        <Link to="/blog" className="text-[#03966a] font-bold hover:text-[#056c94] transition flex items-center justify-center md:justify-start gap-2">
                             <svg className="w-5 h-5 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                             Back to all posts
                         </Link>

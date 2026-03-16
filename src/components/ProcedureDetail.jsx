@@ -17,7 +17,7 @@ export default function ProcedureDetail() {
   if (!procedure) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#f5f9eb]">
-        <p className="text-2xl text-[#011923] font-mono">Procedure not found.</p>
+        <p className="text-2xl text-[#03966a] font-mono">Procedure not found.</p>
       </div>
     );
   }
@@ -27,12 +27,12 @@ export default function ProcedureDetail() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         
         {/* Breadcrumb nav */}
-        <nav className="flex mb-8 text-sm font-medium text-[#1a627f]">
-          <Link to="/" className="hover:text-[#011923] transition-colors">Home</Link>
+        <nav className="flex mb-8 text-sm font-medium text-[#03966a]">
+          <Link to="/" className="hover:text-[#03966a] transition-colors">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/procedures" className="hover:text-[#011923] transition-colors">Procedures</Link>
+          <Link to="/procedures" className="hover:text-[#03966a] transition-colors">Procedures</Link>
           <span className="mx-2">/</span>
-          <span className="text-[#011923]">{procedure.title}</span>
+          <span className="text-[#03966a]">{procedure.title}</span>
         </nav>
 
         {/* Hero Section */}
@@ -43,7 +43,7 @@ export default function ProcedureDetail() {
           className="flex flex-col lg:flex-row gap-12 items-center mb-20"
         >
           <div className="w-full lg:w-1/2 relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#1a627f]/20 to-transparent rounded-2xl transform translate-x-3 translate-y-3"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#03966a]/20 to-transparent rounded-2xl transform translate-x-3 translate-y-3"></div>
             <img 
               src={procedure.image} 
               alt={procedure.title} 
@@ -51,16 +51,16 @@ export default function ProcedureDetail() {
             />
           </div>
           <div className="w-full lg:w-1/2 z-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#011923] mb-6 tracking-tight leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#03966a] mb-6 tracking-tight leading-tight">
               {procedure.title}
             </h1>
-            <div className="w-20 h-1 bg-[#1a627f] mb-8 rounded-full"></div>
+            <div className="w-20 h-1 bg-[#03966a] mb-8 rounded-full"></div>
             <p className="text-lg text-[#022431]/80 leading-relaxed mb-8">
               {procedure.longDescription}
             </p>
             <Link 
               to="/book-appointment"
-              className="inline-block px-8 py-4 bg-[#1a627f] text-white font-mono font-bold rounded-lg hover:bg-[#011923] transition-colors duration-300 shadow-lg shadow-[#1a627f]/30 hover:-translate-y-1"
+              className="inline-block px-8 py-4 bg-[#03966a] text-white font-mono font-bold rounded-lg hover:bg-[#03966a] transition-colors duration-300 shadow-lg shadow-[#03966a]/30 hover:-translate-y-1"
             >
               BOOK APPOINTMENT
             </Link>
@@ -76,7 +76,7 @@ export default function ProcedureDetail() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#011923] mb-4">Procedures</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">Procedures</h2>
             <div className="w-16 h-1 bg-[#415843] mx-auto rounded-full"></div>
           </motion.div>
 
@@ -90,10 +90,10 @@ export default function ProcedureDetail() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(26,98,127,0.06)] hover:shadow-[0_8px_30px_rgba(26,98,127,0.12)] transition-shadow duration-300 border border-[#e8f1f5]"
               >
-                <div className="text-5xl font-bold text-[#f5f9eb] [-webkit-text-stroke:1px_#1a627f] mb-6">
+                <div className="text-5xl font-bold text-[#f5f9eb] [-webkit-text-stroke:1px_#03966a] mb-6">
                   {(index + 1).toString().padStart(2, '0')}
                 </div>
-                <h3 className="text-xl font-bold text-[#011923] mb-3">{step.title}</h3>
+                <h3 className="text-xl font-bold text-[#03966a] mb-3">{step.title}</h3>
                 <p className="text-[#022431]/70 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
@@ -109,8 +109,8 @@ export default function ProcedureDetail() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#011923] mb-4">FAQs</h2>
-            <div className="w-16 h-1 bg-[#1a627f] mx-auto rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">FAQs</h2>
+            <div className="w-16 h-1 bg-[#03966a] mx-auto rounded-full"></div>
           </motion.div>
 
           <div className="space-y-4">
@@ -127,10 +127,10 @@ export default function ProcedureDetail() {
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full px-6 py-5 flex items-center justify-between bg-white hover:bg-[#f5f9eb]/50 transition-colors focus:outline-none"
                 >
-                  <span className="text-lg font-semibold text-[#011923] text-left pr-4">
+                  <span className="text-lg font-semibold text-[#03966a] text-left pr-4">
                     {faq.question}
                   </span>
-                  <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#e8f1f5] flex items-center justify-center text-[#1a627f] transition-transform duration-300 ${openFaq === index ? 'rotate-180 bg-[#1a627f] text-white' : ''}`}>
+                  <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#e8f1f5] flex items-center justify-center text-[#03966a] transition-transform duration-300 ${openFaq === index ? 'rotate-180 bg-[#03966a] text-white' : ''}`}>
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
@@ -163,7 +163,7 @@ export default function ProcedureDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-[#1a627f] rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden"
+          className="bg-[#03966a] rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden"
         >
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#f5f9eb] opacity-10 rounded-full blur-3xl"></div>
@@ -176,7 +176,7 @@ export default function ProcedureDetail() {
           </p>
           <Link 
             to="/book-appointment"
-            className="relative z-10 inline-block bg-white text-[#1a627f] font-bold font-mono px-10 py-4 rounded-xl hover:bg-[#f5f9eb] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+            className="relative z-10 inline-block bg-white text-[#03966a] font-bold font-mono px-10 py-4 rounded-xl hover:bg-[#f5f9eb] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
           >
             BOOK APPOINTMENT NOW
           </Link>

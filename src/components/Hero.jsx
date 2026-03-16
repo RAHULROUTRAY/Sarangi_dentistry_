@@ -31,7 +31,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top", // Pin starts when container hits top of viewport
-          end: "+=150%",    // Scroll duration for animation
+          end: "+=200%",    // Increased scroll duration for animation to account for the pause
           pin: true,        // Pin the container
           scrub: 1,         // Smooth scrubbing
         }
@@ -43,7 +43,11 @@ const Hero = () => {
         height: "100vh",
         borderRadius: "0px",
         ease: "none",
+        duration: 1
       });
+      
+      // Hold the full screen video for a moment while scrolling
+      scrollTl.to({}, { duration: 0.5 });
     }
 
     // Cleanup scroll triggers

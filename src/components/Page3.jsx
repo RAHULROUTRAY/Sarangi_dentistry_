@@ -82,11 +82,10 @@ export default function Page3() {
       });
     }
   };
-
   return (
     <motion.div
       ref={sectionRef}
-      className="min-h-[120vh] py-24 px-6 md:px-12 lg:px-20 flex items-center justify-center overflow-hidden relative"
+      className="min-h-[120vh] pt-12 pb-24 px-6 md:px-12 lg:px-20 flex items-center justify-center overflow-hidden relative"
     >
       {/* Dynamic Background Element */}
       <motion.div
@@ -104,7 +103,7 @@ export default function Page3() {
         <div className="flex flex-col xl:flex-row items-center xl:items-start justify-between gap-16 xl:gap-8">
 
           {/* LEFT SIDE: Text Content & Supportive Imagery */}
-          <div className="w-full xl:w-5/12 text-[#1a627f] text-center xl:text-left pt-0 xl:pt-20">
+          <div className="w-full xl:w-5/12 text-[#03966a] text-center xl:text-left pt-0 xl:pt-20">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +166,7 @@ export default function Page3() {
           </div>
 
           {/* RIGHT SIDE: Interactive Visuals */}
-          <div className="w-full xl:w-6/12 flex flex-col items-center relative min-h-[700px] xl:min-h-[850px] justify-center mt-10 xl:mt-0">
+          <div className="w-full xl:w-6/12 flex flex-col items-center relative min-h-[700px] xl:min-h-[650px] justify-center mt-10 xl:mt-0">
 
             {/* Superimposed Circular Image Backdrop */}
             <motion.div
@@ -199,12 +198,6 @@ export default function Page3() {
                   // Render top 4 cards
                   if (index > 3) return null;
 
-                  // Initial Shuffle Positions 
-                  const scatterRadius = 800;
-                  const angle = (service.id / 8) * Math.PI * 2;
-                  const initialX = Math.cos(angle) * scatterRadius;
-                  const initialY = Math.sin(angle) * scatterRadius;
-
                   return (
                     <motion.div
                       key={service.id}
@@ -215,18 +208,16 @@ export default function Page3() {
                       // START STATE: 
                       initial={{
                         opacity: 0,
-                        scale: 0.2,
-                        x: initialX,
-                        y: initialY,
-                        rotateZ: Math.random() * 180 - 90
+                        scale: 0.8,
+                        y: 100
                       }}
 
                       animate={{
                         opacity: isInView ? 1 : 0,
-                        scale: isInView ? (1 - index * 0.06) : 0.2,       
-                        y: isInView ? (index * 26) : initialY,            
-                        x: isInView ? 0 : initialX,                       
-                        rotateZ: isInView ? 0 : (Math.random() * 180 - 90), 
+                        scale: isInView ? (1 - index * 0.06) : 0.8,       
+                        y: isInView ? (index * 26) : 100,            
+                        x: 0,                       
+                        rotateZ: 0, 
                         zIndex: cards.length - index,
                         backgroundColor: `hsl(0, 0%, ${100 - index * 8}%)` 
                       }}
@@ -235,8 +226,8 @@ export default function Page3() {
 
                       transition={{
                         type: "spring",
-                        stiffness: isInView ? 300 : 50, 
-                        delay: isInView && index !== 0 && cards.length === 8 ? (service.id * 0.1) : 0, 
+                        stiffness: 300,
+                        damping: 20,
                         mass: 0.8
                       }}
 

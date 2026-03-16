@@ -1,0 +1,23 @@
+export const certificationsData = [
+  { id: 1, title: 'Garden Of Life', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/certificate-1.png' },
+  { id: 2, title: 'The National Conference of the Indian Endodontic Society', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Has-actively-participated-in-IESCON-2023-The-National-Conference-of-the-Indian-Endodontic-Society-rotated.jpg' },
+  { id: 3, title: 'Single Sitting Endodontics', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Single-Sitting-Endodontics-rotated.jpg' },
+  { id: 4, title: 'Best Dentist Odisha', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Best-Dentist-Odisha-rotated.jpg' },
+  { id: 5, title: '12th IFEA World Endodontics Congress 2020NE', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Cetificate-of-Commendation-1.jpg' },
+  { id: 6, title: 'Certificate of Appreciation', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Certificate-of-Appreciation1-rotated.jpg' },
+  { id: 7, title: 'BioHorizons Day', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/BioHorizons-Day-2018-rotated.jpg' },
+  { id: 8, title: '1st Urban International hard and Soft Tissue Regeneration Symposium', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Certificate-University-Of-Szeged-Urban-Regeneration-Institute-rotated.jpg' },
+  { id: 9, title: 'Certificate of Appreciation', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Certificate-of-Appreciation-rotated.jpg' },
+  { id: 10, title: '10 World Congress for Oral Implantology & AAID Global Conference 2016', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/10-World-Congress-for-Oral-Implantology-AAID-Global-Conference-2016-rotated.jpg' },
+  { id: 11, title: 'Modern Endodontics (Basic Advanced)', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Modern-Endodontics-Basic-Advanced-rotated-1.jpg' },
+  { id: 12, title: 'The FDI Annual World Dental Congress', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/The-FDI-Annual-World-Dental-Congress-rotated.jpg' },
+  { id: 13, title: 'Complete Guide to Restorative Dental Practice', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Complete-Guide-to-Restorative-Dental-Practice-1.jpg' },
+  { id: 14, title: 'Achieving Spectacular Results For A Single Missing Tooth in The Aesthetic Zone', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Achieving-Spectacular-Results-For-A-Single-Missing-Tooth-in-The-Aesthetic-Zone-rotated.jpg' },
+  { id: 15, title: 'BioHorizons Asia Pacific Symposium Series', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/2013-BioHorizons-Asia-Pacific-Symposium-Series-rotated.jpg' },
+  { id: 16, title: 'Idea-i Xcellence', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Idea-i-Xcellence-2013-1.jpg' },
+  { id: 17, title: 'Indian Society of Oral Implantologists 19th National Conference', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Indian-Society-of-Oral-Implantologists-19th-National-Conference-rotated.jpg' },
+  { id: 18, title: 'New Age Aspects of Dentistry', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/New-Age-Aspects-of-Dentistry-2012.jpg' },
+  { id: 19, title: 'One Stage Immediate Loading Implant', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Ida-Odisha-State-Branch-This-Certificate-of-Participation-is-Awarded-rotated.jpg' },
+  { id: 20, title: 'Implant Placement In The Aesthetic Zone & Preparation For Metal Free Restorations', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/Implant-Placement-In-The-Aesthetic-Zone-Preparation-For-Metal-Free-Restorations-rotated.jpg' },
+  { id: 21, title: '3rd Annual State dental conference & CDE program', image: 'https://sarangidentistry.in/wp-content/uploads/2024/01/3rd-Annual-State-dental-conference-CDE-program-rotated.jpg' }
+];

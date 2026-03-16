@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import HomeAbout from './components/HomeAbout';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
 import Footer from './components/Footer';
@@ -17,6 +18,8 @@ import Procedures from './components/Procedures';
 import ProcedureDetail from './components/ProcedureDetail';
 import ContactPage from './components/ContactPage';
 import BookAppointmentPage from './components/BookAppointmentPage';
+import CertificationPage from './components/CertificationPage';
+import GalleryPage from './components/GalleryPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -60,6 +63,7 @@ function App() {
             element={
               <div className="bg-[#f5f9eb]">
                 <Hero />
+                <HomeAbout />
                 <Page2 />
                 <Page3 />
               </div>
@@ -74,6 +78,8 @@ function App() {
           <Route path="/procedure/:id" element={<ProcedureDetail />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/book-appointment" element={<BookAppointmentPage />} />
+          <Route path="/certification" element={<CertificationPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
         </Routes>
         <Footer />
       </main>

@@ -46,13 +46,13 @@ export default function Blog() {
     const blX = useTransform(scrollYProgress, [0.1, 0.9], ["-100vw", "0vw"]);
     const blY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
 
-    const bcY = useTransform(scrollYProgress, [0.1, 0.3], ["100vh", "0vh"]);
+    const bcY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
 
-    const brX = useTransform(scrollYProgress, [0.1, 0.3], ["100vw", "0vw"]);
-    const brY = useTransform(scrollYProgress, [0.1, 0.3], ["100vh", "0vh"]);
+    const brX = useTransform(scrollYProgress, [0.1, 0.9], ["100vw", "0vw"]);
+    const brY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
 
     // Fade
-    const surroundOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
+    const surroundOpacity = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
 
     return (
         <div >
@@ -70,7 +70,7 @@ export default function Blog() {
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase mb-4 text-[#f5f9eb] drop-shadow-2xl">
                             Capturing <br /> The Pulse
                         </h1>
-                        <p className="text-xl md:text-2xl font-light text-[#1a627f]">
+                        <p className="text-xl md:text-2xl font-light text-[#03966a]">
                             Scroll down to know more.
                         </p>
                     </motion.div>
@@ -144,7 +144,7 @@ export default function Blog() {
             <div className="relative z-10 bg-[#f5f9eb] pt-20 md:pt-32 pb-32 md:pb-40 px-6 lg:px-20">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16 md:mb-20">
-                        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#1a627f]">
+                        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#03966a]">
                             Latest Insights
                         </h2>
                         <p className="text-xl leading-relaxed text-[#27393f] max-w-2xl mx-auto font-light">
@@ -157,12 +157,12 @@ export default function Blog() {
                             <Link
                                 to={`/blog/${blog.id}`}
                                 key={blog.id}
-                                className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-[#c0d2d8] hover:border-[#1a627f] transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-[rgba(26,98,127,0.2)] hover:-translate-y-2"
+                                className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-[#c0d2d8] hover:border-[#03966a] transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-[rgba(26,98,127,0.2)] hover:-translate-y-2"
                             >
                                 {/* Image Wrapper */}
                                 <div className="w-full aspect-video overflow-hidden bg-[#eff4f5] relative">
                                     <div className="absolute top-4 left-4 z-10 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#c0d2d8]">
-                                        <span className="text-[#1a627f] text-xs font-bold tracking-widest uppercase">{blog.category}</span>
+                                        <span className="text-[#03966a] text-xs font-bold tracking-widest uppercase">{blog.category}</span>
                                     </div>
                                     <img
                                         src={blog.image}
@@ -173,7 +173,7 @@ export default function Blog() {
 
                                 {/* Content Body */}
                                 <div className="p-8 md:p-10 flex flex-col grow">
-                                    <h3 className="text-2xl font-bold mb-4 text-[#011923] group-hover:text-[#1a627f] transition-colors leading-snug line-clamp-2">
+                                    <h3 className="text-2xl font-bold mb-4 text-[#03966a] group-hover:text-[#03966a] transition-colors leading-snug line-clamp-2">
                                         {blog.title}
                                     </h3>
 
@@ -184,7 +184,7 @@ export default function Blog() {
                                     {/* Footer */}
                                     <div className="mt-auto flex items-center justify-between text-sm border-t border-[#c0d2d8] pt-6">
                                         <span className="text-[#27393f] tracking-wider uppercase font-medium">By {blog.author}</span>
-                                        <div className="flex items-center text-[#1a627f] font-bold group-hover:translate-x-2 transition-transform">
+                                        <div className="flex items-center text-[#03966a] font-bold group-hover:translate-x-2 transition-transform">
                                             <span>Read Article</span>
                                             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                                         </div>

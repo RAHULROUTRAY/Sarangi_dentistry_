@@ -36,7 +36,7 @@ export default function Procedures() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#011923] mb-6 tracking-tight">
             Our Dental Procedures
           </h1>
-          <div className="w-24 h-1 bg-[#1a627f] mx-auto rounded-full mb-6"></div>
+          <div className="w-24 h-1 bg-[#03966a] mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-[#022431]/80 max-w-3xl mx-auto leading-relaxed">
             We provide a wide range of world-class dental treatments tailored to your needs. 
             Explore our specialized procedures ensuring a perfect, healthy smile.
@@ -66,7 +66,7 @@ export default function Procedures() {
               </div>
               
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-[#011923] mb-3 group-hover:text-[#1a627f] transition-colors">
+                <h3 className="text-xl font-bold text-[#011923] mb-3 group-hover:text-[#03966a] transition-colors">
                   {procedure.title}
                 </h3>
                 <p className="text-[#022431]/70 mb-6 flex-grow leading-relaxed text-sm">
@@ -74,11 +74,11 @@ export default function Procedures() {
                 </p>
                 <Link 
                   to={procedure.path}
-                  className="inline-flex items-center text-[#1a627f] font-mono font-bold group/link self-start"
+                  className="inline-flex items-center text-[#03966a] font-mono font-bold group/link self-start"
                 >
                   <span className="relative overflow-hidden">
                     <span>Know More</span>
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#1a627f] transform -translate-x-[101%] group-hover/link:translate-x-0 transition-transform duration-300"></span>
+                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#03966a] transform -translate-x-[101%] group-hover/link:translate-x-0 transition-transform duration-300"></span>
                   </span>
                   <svg className="w-5 h-5 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

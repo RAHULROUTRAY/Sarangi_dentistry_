@@ -21,79 +21,88 @@ export default function BookAppointmentPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(26,98,127,0.12)] overflow-hidden flex flex-col lg:flex-row border border-[#e8f1f5] lg:max-h-[85vh]"
+          className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(26,98,127,0.12)] overflow-hidden flex flex-col lg:flex-row border border-[#e8f1f5] w-full"
         >
           {/* Form Section */}
-          <div className="w-full lg:w-1/2 p-6 md:p-8 lg:p-10 relative flex flex-col justify-center overflow-y-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#011923] mb-2 tracking-tight">
-              Book Appointment
-            </h1>
-            <div className="w-12 h-1 bg-[#1a627f] mb-4 rounded-full"></div>
-            <p className="text-[#022431]/80 mb-6 leading-relaxed text-sm md:text-base">
-              Schedule your visit with us. Fill out the form below and our team will get back to you to confirm your appointment.
-            </p>
+          <div className="w-full lg:w-[55%] p-8 md:p-12 relative flex flex-col justify-center">
+            <div className="mb-8">
+              <h1 className="text-4xl md:text-5xl font-mono font-bold text-[#03966a] mb-4 tracking-tight">
+                Book Appointment
+              </h1>
+              <div className="w-16 h-1.5 bg-[#03966a] rounded-full mb-6"></div>
+              <p className="text-[#3a555f] leading-relaxed text-lg">
+                Schedule your visit with us. Fill out the form below and our team will get back to you to confirm your appointment.
+              </p>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#011923] mb-1.5">Full Name</label>
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="block text-sm font-bold font-mono text-[#022431] uppercase tracking-wider">Full Name</label>
                   <input 
                     type="text" 
                     id="name" 
                     required
-                    className="w-full bg-[#f5f9eb]/50 border border-[#c0d2d8] rounded-xl px-4 py-2.5 text-[#011923] focus:outline-none focus:ring-2 focus:ring-[#1a627f]/50 focus:border-[#1a627f] transition-all"
+                    className="w-full bg-[#f8fbfa] border border-[#d1e0e5] rounded-2xl px-5 py-3.5 text-[#03966a] focus:outline-none focus:ring-2 focus:ring-[#03966a] focus:border-transparent transition-all shadow-sm"
                     placeholder="John Doe"
                   />
                 </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-[#011923] mb-1.5">Phone Number</label>
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="block text-sm font-bold font-mono text-[#022431] uppercase tracking-wider">Phone Number</label>
                   <input 
                     type="tel" 
                     id="phone" 
                     required
-                    className="w-full bg-[#f5f9eb]/50 border border-[#c0d2d8] rounded-xl px-4 py-2.5 text-[#011923] focus:outline-none focus:ring-2 focus:ring-[#1a627f]/50 focus:border-[#1a627f] transition-all"
+                    className="w-full bg-[#f8fbfa] border border-[#d1e0e5] rounded-2xl px-5 py-3.5 text-[#03966a] focus:outline-none focus:ring-2 focus:ring-[#03966a] focus:border-transparent transition-all shadow-sm"
                     placeholder="+91 9938942846"
                   />
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="service" className="block text-sm font-semibold text-[#011923] mb-1.5">Service Required</label>
-                <select 
-                  id="service" 
-                  className="w-full bg-[#f5f9eb]/50 border border-[#c0d2d8] rounded-xl px-4 py-2.5 text-[#011923] focus:outline-none focus:ring-2 focus:ring-[#1a627f]/50 focus:border-[#1a627f] transition-all appearance-none"
-                >
-                  <option value="">Select a service</option>
-                  <option value="consultation">General Consultation</option>
-                  <option value="teeth-scaling">Teeth Scaling & Polishing</option>
-                  <option value="orthodontics">Orthodontic Treatment</option>
-                  <option value="implants">Tooth Implant</option>
-                  <option value="other">Other</option>
-                </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="space-y-2">
+                  <label htmlFor="service" className="block text-sm font-bold font-mono text-[#022431] uppercase tracking-wider">Service Required</label>
+                  <div className="relative">
+                    <select 
+                      id="service" 
+                      className="w-full bg-[#f8fbfa] border border-[#d1e0e5] rounded-2xl px-5 py-3.5 text-[#03966a] focus:outline-none focus:ring-2 focus:ring-[#03966a] focus:border-transparent transition-all appearance-none shadow-sm"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="consultation">General Consultation</option>
+                      <option value="teeth-scaling">Teeth Scaling & Polishing</option>
+                      <option value="orthodontics">Orthodontic Treatment</option>
+                      <option value="implants">Tooth Implant</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-[#03966a]">
+                      <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="date" className="block text-sm font-bold font-mono text-[#022431] uppercase tracking-wider">Preferred Date</label>
+                  <input 
+                    type="date" 
+                    id="date" 
+                    className="w-full bg-[#f8fbfa] border border-[#d1e0e5] rounded-2xl px-5 py-3.5 text-[#03966a] focus:outline-none focus:ring-2 focus:ring-[#03966a] focus:border-transparent transition-all shadow-sm"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="date" className="block text-sm font-semibold text-[#011923] mb-1.5">Preferred Date</label>
-                <input 
-                  type="date" 
-                  id="date" 
-                  className="w-full bg-[#f5f9eb]/50 border border-[#c0d2d8] rounded-xl px-4 py-2.5 text-[#011923] focus:outline-none focus:ring-2 focus:ring-[#1a627f]/50 focus:border-[#1a627f] transition-all"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-[#011923] mb-1.5">Additional Message</label>
+              <div className="space-y-2">
+                <label htmlFor="message" className="block text-sm font-bold font-mono text-[#022431] uppercase tracking-wider">Additional Message</label>
                 <textarea 
                   id="message" 
-                  rows="3" 
-                  className="w-full bg-[#f5f9eb]/50 border border-[#c0d2d8] rounded-xl px-4 py-2.5 text-[#011923] focus:outline-none focus:ring-2 focus:ring-[#1a627f]/50 focus:border-[#1a627f] transition-all resize-none"
+                  rows="2" 
+                  className="w-full bg-[#f8fbfa] border border-[#d1e0e5] rounded-2xl px-5 py-3.5 text-[#03966a] focus:outline-none focus:ring-2 focus:ring-[#03966a] focus:border-transparent transition-all resize-none shadow-sm"
                   placeholder="How can we help you?"
                 ></textarea>
               </div>
 
               <button 
                 type="submit" 
-                className="w-full bg-[#1a627f] text-white font-bold font-mono py-3 rounded-xl hover:bg-[#011923] transition-colors duration-300 shadow-lg shadow-[#1a627f]/20 hover:-translate-y-0.5"
+                className="w-full bg-[#022431] text-white font-bold font-mono py-4 rounded-2xl hover:bg-[#03966a] transition-colors duration-300 shadow-[0_10px_20px_rgba(26,98,127,0.2)] mt-4 hover:-translate-y-0.5"
               >
                 SUBMIT REQUEST
               </button>
@@ -119,28 +128,28 @@ export default function BookAppointmentPage() {
           </div>
 
           {/* Image Section */}
-          <div className="w-full lg:w-1/2 relative bg-[#1a627f] min-h-[300px] lg:min-h-full">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#011923]/80 via-[#011923]/20 to-transparent z-10"></div>
+          <div className="w-full lg:w-[45%] relative bg-[#03966a] min-h-[400px]">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#03966a] via-[#03966a]/40 to-transparent z-10"></div>
             <img src="/assets/appointemnt-side.jpg"
               alt="Book Appointment at Sarangi Dentistry" 
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
             
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-20">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
-                <h3 className="text-2xl font-bold text-white mb-2">Working Hours</h3>
-                <div className="space-y-2 mt-4">
-                  <div className="flex justify-between text-[#ebf4d7]">
-                    <span className="font-medium">Monday - Saturday</span>
-                    <span>10:00 AM - 01:00 PM</span>
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20">
+              <div className="bg-[#022431]/60 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl">
+                <h3 className="text-3xl font-mono font-bold text-white mb-6">Working Hours</h3>
+                <div className="space-y-4 font-sans">
+                  <div className="flex justify-between text-[#ebf4d7] items-center border-b border-white/10 pb-4">
+                    <span className="font-medium text-lg">Mon - Sat</span>
+                    <span className="font-mono bg-white/10 px-3 py-1 rounded-lg">10:00 AM - 01:00 PM</span>
                   </div>
-                  <div className="flex justify-between text-[#ebf4d7]">
-                    <span className="font-medium">Evening</span>
-                    <span>06:00 PM - 07:30 PM</span>
+                  <div className="flex justify-between text-[#ebf4d7] items-center border-b border-white/10 pb-4">
+                    <span className="font-medium text-lg">Evening</span>
+                    <span className="font-mono bg-white/10 px-3 py-1 rounded-lg">06:00 PM - 07:30 PM</span>
                   </div>
-                  <div className="flex justify-between text-red-300 font-medium mt-2 pt-2 border-t border-white/10">
-                    <span>Sunday</span>
-                    <span>Closed</span>
+                  <div className="flex justify-between text-red-300 font-medium items-center pt-2">
+                    <span className="text-lg text-red-400">Sunday</span>
+                    <span className="font-mono bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded-lg">Closed</span>
                   </div>
                 </div>
               </div>

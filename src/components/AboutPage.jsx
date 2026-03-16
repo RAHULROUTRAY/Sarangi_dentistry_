@@ -22,7 +22,7 @@ export default function AboutPage() {
   const accentY = useTransform(scrollYProgress, [0.1, 0.35], [60, 0]);
 
   return (
-    <div className="bg-[#f5f9eb] text-[#011923] min-h-screen">
+    <div className="bg-[#f5f9eb] text-[#03966a] min-h-screen">
       {/* Tall scroll container — gives breathing room for animations */}
       <div
         ref={containerRef}
@@ -62,10 +62,10 @@ export default function AboutPage() {
           {/* Scroll prompt */}
           <motion.div
             style={{ opacity: accentOpacity }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#1a627f] text-sm tracking-widest uppercase"
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#03966a] text-sm tracking-widest uppercase"
           >
             <span>Scroll to discover more</span>
-            <div className="w-px h-16 bg-gradient-to-b from-[#1a627f] via-[#c0d2d8] to-transparent mt-3" />
+            <div className="w-px h-16 bg-gradient-to-b from-[#03966a] via-[#c0d2d8] to-transparent mt-3" />
           </motion.div>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
             transition={{ duration: 1 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-10 text-[#1a627f]">
+            <h2 className="text-4xl md:text-6xl font-bold mb-10 text-[#03966a]">
               About Sarangi Dentistry
             </h2>
             <div className="max-w-4xl mx-auto text-lg md:text-xl text-[#27393f] leading-relaxed space-y-8">
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 Sarangi Dentistry is a leading multi-specialty dental clinic in Bhubaneswar. Our commitment is to deliver a holistic and personalized dental experience, guided by a team of experts, cutting-edge technology, and patient-centric treatment plans.
               </p>
               <p>
-                At Sarangi Dentistry, we boast an exceptional team comprising experienced staff under the guidance of board-certified and award-winner <span className="text-[#1a627f] font-semibold">Dr. Soumendra Sarangi</span>. Our clinic is equipped with state-of-the-art dental technology, including CAD/CAM and OPG, complemented by a sophisticated sterilization facility and laboratory. Each treatment chamber is designed to offer a serene ambiance, customizable to your preferences for temperature and entertainment, ensuring a comfortable and stress-free experience.
+                At Sarangi Dentistry, we boast an exceptional team comprising experienced staff under the guidance of board-certified and award-winner <span className="text-[#03966a] font-semibold">Dr. Soumendra Sarangi</span>. Our clinic is equipped with state-of-the-art dental technology, including CAD/CAM and OPG, complemented by a sophisticated sterilization facility and laboratory. Each treatment chamber is designed to offer a serene ambiance, customizable to your preferences for temperature and entertainment, ensuring a comfortable and stress-free experience.
               </p>
             </div>
           </motion.section>
@@ -101,7 +101,7 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#011923]">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#03966a]">
               What Makes Us the Perfect Partner of Your Dental Health?
             </h2>
 
@@ -130,9 +130,9 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.8, delay: i * 0.1 }}
-                  className="bg-white border border-[#c0d2d8] rounded-3xl p-8 hover:border-[#1a627f] hover:shadow-xl hover:shadow-[#c0d2d8] transition-all duration-500"
+                  className="bg-white border border-[#c0d2d8] rounded-3xl p-8 hover:border-[#03966a] hover:shadow-xl hover:shadow-[#c0d2d8] transition-all duration-500"
                 >
-                  <h3 className="text-2xl font-semibold mb-5 text-[#1a627f]">{item.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-5 text-[#03966a]">{item.title}</h3>
                   <p className="text-[#3a555f] leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
@@ -148,16 +148,16 @@ export default function AboutPage() {
             className="grid md:grid-cols-2 gap-12"
           >
             <div className="bg-gradient-to-br from-white to-[#f5f9eb] p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
-              <div className="text-[#1a627f] uppercase tracking-widest text-sm font-medium mb-6">Our Mission</div>
-              <h3 className="text-3xl font-bold mb-6 text-[#011923]">Enhance the oral health and well-being of our patients</h3>
+              <div className="text-[#03966a] uppercase tracking-widest text-sm font-medium mb-6">Our Mission</div>
+              <h3 className="text-3xl font-bold mb-6 text-[#03966a]">Enhance the oral health and well-being of our patients</h3>
               <p className="text-[#3a555f] leading-relaxed text-lg">
                 At Sarangi Dentistry, our mission is to enhance the oral health and well-being of our patients through personalized, comprehensive dental care. We believe in fostering long-lasting relationships built on trust, integrity, and respect.
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-white to-[#f5f9eb] p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
-              <div className="text-[#1a627f] uppercase tracking-widest text-sm font-medium mb-6">Our Vision</div>
-              <h3 className="text-3xl font-bold mb-6 text-[#011923]">Redefine the dental experience</h3>
+              <div className="text-[#03966a] uppercase tracking-widest text-sm font-medium mb-6">Our Vision</div>
+              <h3 className="text-3xl font-bold mb-6 text-[#03966a]">Redefine the dental experience</h3>
               <p className="text-[#3a555f] leading-relaxed text-lg">
                 At Sarangi Dentistry, our vision is to redefine the dental experience by setting new standards of excellence in patient care, innovation, and community engagement. We envision a future where every smile reflects not just health and beauty but also the warmth of compassionate care and the precision of cutting-edge technology.
               </p>
@@ -171,7 +171,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#011923]">Our Values</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#03966a]">Our Values</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
               {[
                 { num: "01", title: "Excellence", desc: "We uphold the highest standards of clinical excellence and continually invest in advanced technologies and techniques to deliver superior dental care." },
@@ -186,10 +186,10 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-2xl p-7 border border-[#c0d2d8] hover:border-[#1a627f] shadow-sm hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl p-7 border border-[#c0d2d8] hover:border-[#03966a] shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="text-4xl font-black text-[#1a627f] mb-4">{v.num}</div>
-                  <h4 className="text-xl font-semibold mb-3 text-[#011923]">{v.title}</h4>
+                  <div className="text-4xl font-black text-[#03966a] mb-4">{v.num}</div>
+                  <h4 className="text-xl font-semibold mb-3 text-[#03966a]">{v.title}</h4>
                   <p className="text-[#3a555f] text-[15px] leading-relaxed">{v.desc}</p>
                 </motion.div>
               ))}
