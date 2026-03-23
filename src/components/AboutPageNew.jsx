@@ -2,38 +2,52 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function AboutPage() {
-  const containerRef = useRef(null);
+  const sceneRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: sceneRef,
     offset: ["start start", "end end"],
     layoutEffect: false,
   });
 
-  // Hero title fade + slight lift
-  const titleOpacity = useTransform(
+  // Hero animation
+  const heroScale = useTransform(scrollYProgress, [0, 0.55], [1.12, 1]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.35, 0.55], [1, 1, 0]);
+  const heroTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.45],
-    [1, 0, 0],
+    [0, 0.18, 0.35],
+    [1, 1, 0],
   );
-  const titleY = useTransform(scrollYProgress, [0, 0.25], [0, -80]);
+  const heroTextY = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
 
-  // Central hero image scale + subtle zoom out
-  const heroScale = useTransform(scrollYProgress, [0, 0.55], [1.15, 1]);
+  // About reveal panel
+  const aboutY = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.45, 0.65],
+    ["100%", "85%", "25%", "0%"],
+  );
+  const aboutScale = useTransform(scrollYProgress, [0, 0, 1], [0.75, 0.85, 1]);
+  const aboutRadius = useTransform(
+    scrollYProgress,
+    [0, 0.45, 0.65],
+    [36, 36, 0],
+  );
+  const aboutOpacity = useTransform(scrollYProgress, [0.08, 0.2], [0.75, 1]);
 
-  // Surrounding / accent elements fade in later
-  const accentOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-  const accentY = useTransform(scrollYProgress, [0.1, 0.35], [60, 0]);
+  const scrollHintOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.12, 0.2],
+    [1, 1, 0],
+  );
 
   return (
-    <div className="bg-[#f5f9eb] text-[#03966a] min-h-screen">
-      {/* Tall scroll container — gives breathing room for animations */}
-      <div ref={containerRef} className="relative h-[220vh]">
-        {/* Sticky hero section */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[linear-gradient(180deg,_#f5f9eb_0%,_#e7f0e8_28%,_#cedfd8_55%,_#9ab4ad_78%,_#5f7f7b_100%)]">
-          {/* Background image with overlay */}
+    <div className="bg-[#f8fffa] text-[#03966a] min-h-screen">
+      {/* Sticky reveal scene */}
+      <section ref={sceneRef} className="relative h-[220vh]">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {/* Hero image */}
           <motion.div
-            style={{ scale: heroScale }}
+            style={{ scale: heroScale, opacity: heroOpacity }}
             className="absolute inset-0 z-0"
           >
             <img
@@ -41,81 +55,88 @@ export default function AboutPage() {
               alt="Sarangi Dentistry Clinic"
               className="w-full h-full object-cover brightness-[0.55]"
             />
-            <div className="absolute inset-0 bg-transparent" />
           </motion.div>
 
-          {/* Main hero content */}
+          {/* Hero content */}
           <motion.div
-            style={{ opacity: titleOpacity, y: titleY }}
-            className="relative z-10 text-center px-6 max-w-5xl"
+            style={{ opacity: heroTextOpacity, y: heroTextY }}
+            className="absolute inset-0 z-10 flex items-center justify-center"
           >
-            <h1 className="text-5xl text-[#fefae0] md:text-7xl lg:text-8xl font-black tracking-tighter uppercase mb-6 drop-shadow-2xl">
-              Creating Beautiful <br className="hidden md:block" /> Smiles
-            </h1>
-            <p className="text-2xl md:text-4xl font-light text-[#ffffff] mb-8">
-              at Sarangi Dentistry
-            </p>
-            <p className="text-lg md:text-xl text-[#fefae0] max-w-3xl mx-auto leading-relaxed">
-              Leading multi-specialty dental clinic in Bhubaneswar delivering
-              holistic, personalized care with cutting-edge technology and
-              compassionate experts.
-            </p>
+            <div className="text-center px-6 max-w-5xl">
+              <h1 className="text-5xl text-white md:text-7xl lg:text-8xl font-black tracking-tighter uppercase mb-6 drop-shadow-2xl">
+                Creating Beautiful <br className="hidden md:block" /> Smiles
+              </h1>
+              <p className="text-2xl md:text-4xl font-light text-white mb-8">
+                at Sarangi Dentistry
+              </p>
+              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed">
+                Leading multi-specialty dental clinic in Bhubaneswar delivering
+                holistic, personalized care with cutting-edge technology and
+                compassionate experts.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Scroll prompt */}
+          {/* Scroll hint */}
           <motion.div
-            style={{ opacity: accentOpacity }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#03966a] text-sm tracking-widest uppercase"
+            style={{ opacity: scrollHintOpacity }}
+            className="absolute w-full bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center text-[#f5f9eb] text-sm tracking-widest uppercase"
           >
             <span>Scroll to discover more</span>
-            <div className="w-px h-16 bg-gradient-to-b from-[#03966a] via-[#c0d2d8] to-transparent mt-3" />
+            <div className="w-px h-16 bg-gradient-to-b from-[#f5f9eb] via-white/70 to-transparent mt-3" />
+          </motion.div>
+
+          {/* About intro panel */}
+          <motion.div
+            style={{
+              y: aboutY,
+              scale: aboutScale,
+              opacity: aboutOpacity,
+              borderTopLeftRadius: aboutRadius,
+              borderTopRightRadius: aboutRadius,
+            }}
+            className="absolute inset-0 z-20 bg-[#f8fffa] origin-bottom"
+          >
+            <div className="h-screen flex items-center justify-center px-6 pt-10 md:pt-0 md:px-12 lg:px-20">
+              <div className="max-w-5xl mx-auto text-center">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-10 text-[#03966a]">
+                  About Sarangi Dentistry
+                </h2>
+
+                <div className="max-w-4xl mx-auto text-lg md:text-xl text-[#27393f] leading-relaxed space-y-8">
+                  <p>
+                    Sarangi Dentistry is a leading multi-specialty dental clinic
+                    in Bhubaneswar. Our commitment is to deliver a holistic and
+                    personalized dental experience, guided by a team of experts,
+                    cutting-edge technology, and patient-centric treatment
+                    plans.
+                  </p>
+
+                  <p>
+                    At Sarangi Dentistry, we boast an exceptional team
+                    comprising experienced staff under the guidance of
+                    board-certified and award-winner{" "}
+                    <span className="text-[#03966a] font-semibold">
+                      Dr. Soumendra Sarangi
+                    </span>
+                    . Our clinic is equipped with state-of-the-art dental
+                    technology, including CAD/CAM and OPG, complemented by a
+                    sophisticated sterilization facility and laboratory.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Main content sections – regular flow after sticky hero */}
-      <div className="relative z-10 bg-[#f5f9eb] -mt-32 pt-40 pb-32 px-6 md:px-12 lg:px-20">
+      {/* Normal page content — same single page scroll */}
+      <section className="relative z-30 bg-[#f8fffa] px-6 md:px-12 lg:px-20 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto space-y-32">
           <motion.section
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1 }}
-            className="text-center"
-          >
-            <h2 className="text-4xl md:text-6xl font-bold mb-10 text-[#03966a]">
-              About Sarangi Dentistry
-            </h2>
-            <div className="max-w-4xl mx-auto text-lg md:text-xl text-[#27393f] leading-relaxed space-y-8">
-              <p>
-                Sarangi Dentistry is a leading multi-specialty dental clinic in
-                Bhubaneswar. Our commitment is to deliver a holistic and
-                personalized dental experience, guided by a team of experts,
-                cutting-edge technology, and patient-centric treatment plans.
-              </p>
-              <p>
-                At Sarangi Dentistry, we boast an exceptional team comprising
-                experienced staff under the guidance of board-certified and
-                award-winner{" "}
-                <span className="text-[#03966a] font-semibold">
-                  Dr. Soumendra Sarangi
-                </span>
-                . Our clinic is equipped with state-of-the-art dental
-                technology, including CAD/CAM and OPG, complemented by a
-                sophisticated sterilization facility and laboratory. Each
-                treatment chamber is designed to offer a serene ambiance,
-                customizable to your preferences for temperature and
-                entertainment, ensuring a comfortable and stress-free
-                experience.
-              </p>
-            </div>
-          </motion.section>
-
-          {/* What Makes Us Perfect Partner */}
-          <motion.section
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#03966a]">
@@ -145,9 +166,9 @@ export default function AboutPage() {
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.8, delay: i * 0.1 }}
-                  className="bg-white border border-[#c0d2d8] rounded-3xl p-8 hover:border-[#03966a] hover:shadow-xl hover:shadow-[#c0d2d8] transition-all duration-500"
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
+                  className="bg-white border border-[#c0d2d8] rounded-3xl p-8 hover:border-[#03966a] hover:shadow-xl transition-all duration-500"
                 >
                   <h3 className="text-2xl font-semibold mb-5 text-[#03966a]">
                     {item.title}
@@ -158,15 +179,14 @@ export default function AboutPage() {
             </div>
           </motion.section>
 
-          {/* Mission + Vision */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.8 }}
             className="grid md:grid-cols-2 gap-12"
           >
-            <div className="bg-gradient-to-br from-white to-[#f5f9eb] p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
+            <div className="bg-white p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
               <div className="text-[#03966a] uppercase tracking-widest text-sm font-medium mb-6">
                 Our Mission
               </div>
@@ -181,7 +201,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-[#f5f9eb] p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
+            <div className="bg-white p-10 md:p-12 rounded-3xl border border-[#c0d2d8] shadow-lg">
               <div className="text-[#03966a] uppercase tracking-widest text-sm font-medium mb-6">
                 Our Vision
               </div>
@@ -199,16 +219,16 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Our Values */}
           <motion.section
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#03966a]">
               Our Values
             </h2>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
               {[
                 {
@@ -239,10 +259,10 @@ export default function AboutPage() {
               ].map((v, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
                   className="bg-white rounded-2xl p-7 border border-[#c0d2d8] hover:border-[#03966a] shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="text-4xl font-black text-[#03966a] mb-4">
@@ -259,7 +279,7 @@ export default function AboutPage() {
             </div>
           </motion.section>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

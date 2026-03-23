@@ -1,44 +1,42 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import HomeAbout from './components/HomeAbout';
-import Page2 from './components/Page2';
-import Page3 from './components/Page3';
-import Footer from './components/Footer';
-import Blog from './components/Blog';
-import BlogPost from './components/BlogPost';
-import AboutPage from './components/AboutPage';
-import Procedures from './components/Procedures';
-import ProcedureDetail from './components/ProcedureDetail';
-import ContactPage from './components/ContactPage';
-import BookAppointmentPage from './components/BookAppointmentPage';
-import CertificationPage from './components/CertificationPage';
-import GalleryPage from './components/GalleryPage';
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import HomeAbout from "./components/HomeAbout";
+import Page2 from "./components/Page2";
+import Page3 from "./components/Page3";
+import Footer from "./components/Footer";
+import Blog from "./components/Blog";
+import BlogPost from "./components/BlogPost";
+import AboutPage from "./components/AboutPageNew";
+import Procedures from "./components/Procedures";
+import ProcedureDetail from "./components/ProcedureDetail";
+import ContactPage from "./components/ContactPage";
+import BookAppointmentPage from "./components/BookAppointmentPage";
+import CertificationPage from "./components/CertificationPage";
+import GalleryPage from "./components/GalleryPage";
+import CustomCursor from "./components/CustomCursor";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
-    
-    // Temporarily disable smooth scrolling to force an instant jump
-    document.documentElement.style.scrollBehavior = 'auto';
-    
-    // Force multiple scroll triggers to guarantee it beats GSAP
+
+    document.documentElement.style.scrollBehavior = "auto";
+
     window.scrollTo(0, 0);
     setTimeout(() => window.scrollTo(0, 0), 10);
 
     const stTimer = setTimeout(() => {
-      // Re-enable CSS smooth scrolling after the jump
-      document.documentElement.style.scrollBehavior = '';
+      document.documentElement.style.scrollBehavior = "";
       ScrollTrigger.refresh(true);
     }, 150);
 
@@ -53,6 +51,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
+      <CustomCursor />
       <ScrollToTop />
       <Navbar />
 
@@ -61,7 +60,7 @@ function App() {
           <Route
             path="/"
             element={
-              <div className="bg-[#f5f9eb]">
+              <div className="bg-[#f8fffa]">
                 <Hero />
                 <HomeAbout />
                 <Page2 />

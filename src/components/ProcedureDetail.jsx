@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useParams } from 'react-router-dom';
-import { proceduresData } from '../data/proceduresData';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link, useParams } from "react-router-dom";
+import { proceduresData } from "../data/proceduresData";
 
 export default function ProcedureDetail() {
   const { id } = useParams();
@@ -16,37 +16,45 @@ export default function ProcedureDetail() {
 
   if (!procedure) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#f5f9eb]">
-        <p className="text-2xl text-[#03966a] font-mono">Procedure not found.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#f8fffa]">
+        <p className="text-2xl text-[#03966a] font-mono">
+          Procedure not found.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f9eb] pt-28 pb-20 font-sans">
+    <div className="min-h-screen bg-[#f8fffa] pt-28 pb-20 font-sans">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-        
         {/* Breadcrumb nav */}
         <nav className="flex mb-8 text-sm font-medium text-[#03966a]">
-          <Link to="/" className="hover:text-[#03966a] transition-colors">Home</Link>
+          <Link to="/" className="hover:text-[#03966a] transition-colors">
+            Home
+          </Link>
           <span className="mx-2">/</span>
-          <Link to="/procedures" className="hover:text-[#03966a] transition-colors">Procedures</Link>
+          <Link
+            to="/procedures"
+            className="hover:text-[#03966a] transition-colors"
+          >
+            Procedures
+          </Link>
           <span className="mx-2">/</span>
           <span className="text-[#03966a]">{procedure.title}</span>
         </nav>
 
         {/* Hero Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex flex-col lg:flex-row gap-12 items-center mb-20"
         >
           <div className="w-full lg:w-1/2 relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#03966a]/20 to-transparent rounded-2xl transform translate-x-3 translate-y-3"></div>
-            <img 
-              src={procedure.image} 
-              alt={procedure.title} 
+            <img
+              src={procedure.image}
+              alt={procedure.title}
               className="w-full h-auto aspect-[4/3] object-cover rounded-2xl shadow-xl relative z-10"
             />
           </div>
@@ -58,7 +66,7 @@ export default function ProcedureDetail() {
             <p className="text-lg text-[#022431]/80 leading-relaxed mb-8">
               {procedure.longDescription}
             </p>
-            <Link 
+            <Link
               to="/book-appointment"
               className="inline-block px-8 py-4 bg-[#03966a] text-white font-mono font-bold rounded-lg hover:bg-[#03966a] transition-colors duration-300 shadow-lg shadow-[#03966a]/30 hover:-translate-y-1"
             >
@@ -69,14 +77,16 @@ export default function ProcedureDetail() {
 
         {/* Process Steps */}
         <div className="mb-24">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">Procedures</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">
+              Procedures
+            </h2>
             <div className="w-16 h-1 bg-[#415843] mx-auto rounded-full"></div>
           </motion.div>
 
@@ -91,10 +101,14 @@ export default function ProcedureDetail() {
                 className="bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(26,98,127,0.06)] hover:shadow-[0_8px_30px_rgba(26,98,127,0.12)] transition-shadow duration-300 border border-[#e8f1f5]"
               >
                 <div className="text-5xl font-bold text-[#f5f9eb] [-webkit-text-stroke:1px_#03966a] mb-6">
-                  {(index + 1).toString().padStart(2, '0')}
+                  {(index + 1).toString().padStart(2, "0")}
                 </div>
-                <h3 className="text-xl font-bold text-[#03966a] mb-3">{step.title}</h3>
-                <p className="text-[#022431]/70 leading-relaxed">{step.description}</p>
+                <h3 className="text-xl font-bold text-[#03966a] mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-[#022431]/70 leading-relaxed">
+                  {step.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -102,14 +116,16 @@ export default function ProcedureDetail() {
 
         {/* FAQs */}
         <div className="max-w-3xl mx-auto mb-20">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">FAQs</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#03966a] mb-4">
+              FAQs
+            </h2>
             <div className="w-16 h-1 bg-[#03966a] mx-auto rounded-full"></div>
           </motion.div>
 
@@ -130,9 +146,21 @@ export default function ProcedureDetail() {
                   <span className="text-lg font-semibold text-[#03966a] text-left pr-4">
                     {faq.question}
                   </span>
-                  <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#e8f1f5] flex items-center justify-center text-[#03966a] transition-transform duration-300 ${openFaq === index ? 'rotate-180 bg-[#03966a] text-white' : ''}`}>
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <span
+                    className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#e8f1f5] flex items-center justify-center text-[#03966a] transition-transform duration-300 ${openFaq === index ? "rotate-180 bg-[#03966a] text-white" : ""}`}
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </span>
                 </button>
@@ -140,9 +168,9 @@ export default function ProcedureDetail() {
                   {openFaq === index && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
+                      animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="px-6 bg-[#f5f9eb]/30"
                     >
                       <p className="py-4 text-[#022431]/80 leading-relaxed border-t border-[#e8f1f5]">
@@ -157,7 +185,7 @@ export default function ProcedureDetail() {
         </div>
 
         {/* CTA Section */}
-        <motion.div 
+        <motion.div
           id="book"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,21 +195,21 @@ export default function ProcedureDetail() {
         >
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#f5f9eb] opacity-10 rounded-full blur-3xl"></div>
-          
+
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10 tracking-tight">
             Ready for a Healthy Smile?
           </h2>
           <p className="text-lg text-[#e8f1f5] mb-10 max-w-2xl mx-auto relative z-10">
-            Schedule your appointment today and experience personalized, high-quality dental care from our expert team.
+            Schedule your appointment today and experience personalized,
+            high-quality dental care from our expert team.
           </p>
-          <Link 
+          <Link
             to="/book-appointment"
             className="relative z-10 inline-block bg-white text-[#03966a] font-bold font-mono px-10 py-4 rounded-xl hover:bg-[#f5f9eb] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform hover:-translate-y-1"
           >
             BOOK APPOINTMENT NOW
           </Link>
         </motion.div>
-
       </div>
     </div>
   );

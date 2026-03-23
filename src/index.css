@@ -2,16 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {}
+:root {
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
 }
- html{
+
+html {
   scroll-behavior: smooth;
- }
+}
+
 html,
 body {
   height: 100%;
@@ -20,7 +24,53 @@ body {
   background: #f5f9eb;
   color: #131c20;
 }
+
 *::selection {
   color: #f5f9eb;
   background-color: #022431;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.custom-cursor,
+.custom-cursor-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform, opacity, background-color;
+}
+
+.custom-cursor {
+  width: 14px;
+  height: 14px;
+  background: rgba(85, 138, 120, 1);
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 0 1px rgba(85, 138, 120, 0.12),
+    0 0 24px rgba(85, 138, 120, 0.28);
+}
+
+.custom-cursor-blur {
+  width: 34px;
+  height: 34px;
+  background: rgba(85, 138, 120, 0.22);
+  filter: blur(14px);
+  transform: translate(-50%, -50%);
+}
+
+.cursor-invert,
+.cursor-heading {
+  position: relative;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-blur {
+    display: none !important;
+  }
 }

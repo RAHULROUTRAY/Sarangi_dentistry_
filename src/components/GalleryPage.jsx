@@ -1,13 +1,16 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { galleryImages } from '../data/galleryData';
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
+import { galleryImages } from "../data/galleryData";
 
 const GalleryPage = () => {
   const images = useMemo(() => {
-    let baseImages = galleryImages.length > 0 ? galleryImages : [
-      'https://sarangidentistry.in/wp-content/uploads/2024/01/clinic-1.jpg',
-      'https://sarangidentistry.in/wp-content/uploads/2024/01/clinic-2.jpg'
-    ];
+    let baseImages =
+      galleryImages.length > 0
+        ? galleryImages
+        : [
+            "https://sarangidentistry.in/wp-content/uploads/2024/01/clinic-1.jpg",
+            "https://sarangidentistry.in/wp-content/uploads/2024/01/clinic-2.jpg",
+          ];
 
     let filled = [...baseImages];
     while (filled.length < 15) {
@@ -23,12 +26,12 @@ const GalleryPage = () => {
       <div className="flex w-[200%] items-center gap-6 py-8">
         <motion.div
           className="flex w-1/2 justify-around gap-6"
-          animate={{ x: ['0%', '-100%'] }}
+          animate={{ x: ["0%", "-100%"] }}
           transition={{
-            ease: 'linear',
+            ease: "linear",
             duration: speed,
             repeat: Infinity,
-            repeatType: "loop"
+            repeatType: "loop",
           }}
         >
           {duplicatedImages.map((src, i) => (
@@ -51,7 +54,7 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="bg-[#f5f9eb] min-h-screen w-full overflow-hidden flex flex-col relative">
+    <div className="bg-[#f8fffa] min-h-screen w-full overflow-hidden flex flex-col relative">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#e8f1f5] to-transparent opacity-70 pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#c0d2d8] rounded-full mix-blend-multiply filter blur-[100px] opacity-40 pointer-events-none" />
 
@@ -72,7 +75,10 @@ const GalleryPage = () => {
           transition={{ delay: 0.1 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#011923] text-center tracking-tight"
         >
-          Clinic <span className="text-[#606c38] italic font-serif tracking-normal">Gallery</span>
+          Clinic{" "}
+          <span className="text-[#606c38] italic font-serif tracking-normal">
+            Gallery
+          </span>
         </motion.h1>
       </div>
 
@@ -88,4 +94,3 @@ const GalleryPage = () => {
 };
 
 export default GalleryPage;
-
