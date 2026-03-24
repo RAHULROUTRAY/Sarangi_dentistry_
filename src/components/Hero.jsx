@@ -1,45 +1,55 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimatePresence } from "framer-motion";
+import { TextAnimate } from "./TextAnimate";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FILL_STYLE = {
-  color: "rgba(85, 138, 120, 0.9)",
-};
+const HERO_PAIRS = [
+  {
+    head: "Radiant Smiles are Our Specialty",
+    subhead: "Sophisticated dental procedures and treatments tailored to enhance your smile with natural-looking results.",
+  },
+  {
+    head: "Artistic Smile Rejuvenation",
+    subhead: "Specializing in aesthetic and functional smile restorations using advanced dental implant methods, ranging from minimally invasive to ultra-modern laser surgeries.",
+  },
+  {
+    head: "Confidence in Every Smile",
+    subhead: "Customized porcelain & ceramic crowns crafted with perfection showcasing quality craftsmanship and advanced technology to beautifully restore form, function, and vitality of your teeth.",
+  }
+];
 
-const textBaseClass =
-  "block uppercase font-black font-['Futura','Helvetica_Neue','Arial',sans-serif] leading-[0.95] tracking-[-0.04em] whitespace-nowrap";
+const HeroTextCarousel = () => {
+  const [index, setIndex] = useState(0);
 
-const HeroText = ({ refs = {} }) => {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % HERO_PAIRS.length);
+    }, 6000); 
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="inline-flex flex-col items-center text-center leading-none select-none">
-      <h1
-        ref={refs.title1Ref}
-        data-cursor="invert"
-        className={`${textBaseClass} cursor-heading text-[13vw] sm:text-[11vw] md:text-[8.4vw]`}
-        style={FILL_STYLE}
-      >
-        Radiant Smiles
-      </h1>
-
-      <h1
-        ref={refs.title2Ref}
-        data-cursor="invert"
-        className={`${textBaseClass} cursor-heading text-[12vw] sm:text-[10vw] md:text-[8.1vw]`}
-        style={FILL_STYLE}
-      >
-        are
-      </h1>
-
-      <h1
-        ref={refs.title3Ref}
-        data-cursor="invert"
-        className={`${textBaseClass} cursor-heading text-[11.5vw] sm:text-[9.8vw] md:text-[8.4vw]`}
-        style={FILL_STYLE}
-      >
-        Our Specialty
-      </h1>
+    <div className="absolute inset-0 z-40 flex items-center justify-center px-4 sm:px-8 pointer-events-none">
+      <div className="w-full max-w-5xl flex flex-col items-center text-center">
+        <AnimatePresence mode="wait">
+          <div key={index} className="flex flex-col items-center gap-4 md:gap-6 w-full pointer-events-auto cursor-heading" data-cursor="invert">
+            <TextAnimate 
+              text={HERO_PAIRS[index].head} 
+              by="word"
+              className="block font-black font-['Futura','Helvetica_Neue','Arial',sans-serif] leading-[1] tracking-[-0.04em] text-[10vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[5vw] text-[rgba(85,138,120,0.95)]"
+            />
+            <TextAnimate 
+              text={HERO_PAIRS[index].subhead} 
+              by="word"
+              delay={0.5}
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3a555f] leading-relaxed max-w-[95%] md:max-w-[85%] font-medium"
+            />
+          </div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
@@ -47,10 +57,6 @@ const HeroText = ({ refs = {} }) => {
 const Hero = () => {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
-
-  const title1Ref = useRef(null);
-  const title2Ref = useRef(null);
-  const title3Ref = useRef(null);
 
   const imageCard1Ref = useRef(null);
   const imageCard2Ref = useRef(null);
@@ -67,9 +73,6 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       gsap.set(
         [
-          title1Ref.current,
-          title2Ref.current,
-          title3Ref.current,
           imageCard1Ref.current,
           imageCard2Ref.current,
           imageCard3Ref.current,
@@ -83,17 +86,6 @@ const Hero = () => {
       gsap.set(videoOverlayRef.current, { opacity: 0, y: 60 });
 
       const introTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      introTl.to(
-        [title1Ref.current, title2Ref.current, title3Ref.current],
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.14,
-        },
-        0,
-      );
 
       introTl.to(
         [
@@ -187,7 +179,7 @@ const Hero = () => {
       tl.to(
         content,
         {
-          opacity: 0.14,
+          autoAlpha: 0,
           scale: 0.99,
           ease: "none",
           duration: 0.7,
@@ -311,15 +303,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="absolute inset-0 z-40 flex items-center justify-center">
-          <HeroText
-            refs={{
-              title1Ref,
-              title2Ref,
-              title3Ref,
-            }}
-          />
-        </div>
+        <HeroTextCarousel />
 
         <div
           ref={videoAnchorRef}

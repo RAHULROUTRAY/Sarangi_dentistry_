@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { proceduresData } from "../data/proceduresData";
 
@@ -16,13 +16,38 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileProcedureOpen, setIsMobileProcedureOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isHome = location.pathname === "/";
+      //wait until video is fully expanded
+      const threshold = isHome ? window.innerHeight * 1.8 : 50;
+
+      if (window.scrollY > threshold) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[color:rgb(128_200_138/0.35)] bg-[color:rgb(196_228_194/0.32)] backdrop-blur-xl shadow-[0_8px_30px_rgba(17,66,85,0.18)]">
-      <div className="pointer-events-none absolute inset-0 border-b border-[color:rgb(153_198_57/0.35)] shadow-[inset_0_1px_0_rgba(245,249,235,0.45),inset_0_-1px_0_rgba(43,164,212,0.22)]" />
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ease-in-out px-4 sm:px-6 ${isScrolled ? "pt-4" : "pt-0"}`}>
+      <div 
+        className={`w-full transition-all duration-500 ease-in-out relative z-10 ${
+          isScrolled 
+            ? "max-w-5xl bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full px-5 sm:px-8 border border-white/50" 
+            : "max-w-7xl bg-transparent px-5 sm:px-8 lg:px-10"
+        }`}
+      >
+        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}>
           <div className="flex-shrink-0">
             <NavLink
               to="/"
@@ -38,8 +63,7 @@ export default function Navbar() {
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
-                    `cursor-grow group relative isolate overflow-hidden rounded-lg px-4 py-2.5 text-[#022431] hover:text-[#03966a] font-mono font-semibold transition-colors duration-300 ${
-                      isActive ? "text-[#03966a]" : ""
+                    `cursor-grow group relative isolate overflow-hidden rounded-lg px-4 py-2.5 text-[#022431] hover:text-[#03966a] font-mono font-semibold transition-colors duration-300 ${isActive ? "text-[#03966a]" : ""
                     } flex items-center`
                   }
                 >
@@ -100,9 +124,10 @@ export default function Navbar() {
 
             <Link
               to="/book-appointment"
-              className="cursor-grow ml-4 md:ml-6 px-6 py-2.5 bg-[#03966a] text-white font-mono font-bold rounded-xl hover:bg-[#03966a] transition-colors duration-300 shadow-lg shadow-[#03966a]/20 hover:-translate-y-0.5"
+              className="cursor-grow group relative overflow-hidden ml-4 md:ml-6 px-6 py-2.5 bg-[#03966a] text-white font-mono font-bold rounded-xl shadow-lg shadow-[#03966a]/20 hover:-translate-y-0.5 transition-all duration-300"
             >
-              BOOK APPOINTMENT
+              <div className="absolute -inset-4 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+              <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">BOOK APPOINTMENT</span>
             </Link>
           </div>
 
@@ -113,9 +138,8 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <svg
-                className={`w-8 h-8 transition-transform duration-300 ${
-                  isOpen ? "rotate-90" : ""
-                }`}
+                className={`w-8 h-8 transition-transform duration-300 ${isOpen ? "rotate-90" : ""
+                  }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -142,9 +166,8 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-x-0 top-0 w-4/5 max-w-sm bg-[color:rgb(65_88_67/0.9)] backdrop-blur-xl shadow-2xl transform transition-transform duration-500 ease-in-out ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`md:hidden fixed inset-x-0 top-0 w-4/5 max-w-sm bg-[color:rgb(65_88_67/0.9)] backdrop-blur-xl shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex flex-col h-full pt-20 px-6 overflow-y-auto">
           {navItems.map((item) => (
@@ -157,8 +180,7 @@ export default function Navbar() {
                   to={item.path}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `py-5 text-xl font-mono font-medium text-[#ebf4d7] hover:text-[#f5f9eb] transition-colors flex-grow ${
-                      isActive ? "text-[#f5f9eb]" : ""
+                    `py-5 text-xl font-mono font-medium text-[#ebf4d7] hover:text-[#f5f9eb] transition-colors flex-grow ${isActive ? "text-[#f5f9eb]" : ""
                     }`
                   }
                 >
@@ -172,9 +194,8 @@ export default function Navbar() {
                     className="p-4 text-[#ebf4d7] hover:bg-[#344636] rounded-lg transition-colors"
                   >
                     <svg
-                      className={`w-6 h-6 transition-transform duration-300 ${
-                        isMobileProcedureOpen ? "rotate-180" : ""
-                      }`}
+                      className={`w-6 h-6 transition-transform duration-300 ${isMobileProcedureOpen ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -219,9 +240,10 @@ export default function Navbar() {
             <Link
               to="/book-appointment"
               onClick={() => setIsOpen(false)}
-              className="w-full block text-center px-6 py-4 bg-[#03966a] text-white font-mono font-bold rounded-xl hover:bg-[#f5f9eb] hover:text-[#03966a] transition-all duration-300 shadow-lg shadow-[#03966a]/20"
+              className="group relative overflow-hidden w-full block text-center px-6 py-4 bg-[#03966a] text-white font-mono font-bold rounded-xl shadow-lg shadow-[#03966a]/20 transition-all duration-300"
             >
-              BOOK APPOINTMENT
+              <div className="absolute -inset-4 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+              <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">BOOK APPOINTMENT</span>
             </Link>
           </div>
         </div>

@@ -60,7 +60,10 @@ function App() {
           <Route
             path="/"
             element={
-              <div className="bg-[#f8fffa]">
+              <div 
+                className="bg-[#f8fffa] bg-fixed bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: "url('/assets/sketch%20it%20-sarangi.png')" }}
+              >
                 <Hero />
                 <HomeAbout />
                 <Page2 />
