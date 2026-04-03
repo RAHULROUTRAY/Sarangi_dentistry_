@@ -70,7 +70,7 @@ export default function ProcedureDetail() {
               to="/book-appointment"
               className="group relative overflow-hidden inline-block px-8 py-4 bg-[#03966a] text-white font-mono font-bold rounded-lg shadow-lg shadow-[#03966a]/30 hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="absolute -inset-4 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+              <div className="absolute -inset-4 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
               <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">BOOK APPOINTMENT</span>
             </Link>
           </div>
@@ -208,7 +208,7 @@ export default function ProcedureDetail() {
             to="/book-appointment"
             className="group relative z-10 overflow-hidden inline-block bg-white text-[#03966a] font-bold font-mono px-10 py-4 rounded-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transform hover:-translate-y-1 transition-all duration-300"
           >
-            <div className="absolute -inset-4 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+            <div className="absolute -inset-4 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
             <span className="relative z-10 transition-colors duration-500">BOOK APPOINTMENT NOW</span>
           </Link>
         </motion.div>

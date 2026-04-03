@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import HomeAbout from "./components/HomeAbout";
-import Page2 from "./components/Page2";
 import Page3 from "./components/Page3";
+import Page2 from "./components/Page2";
 import Footer from "./components/Footer";
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
@@ -66,8 +66,8 @@ function App() {
               >
                 <Hero />
                 <HomeAbout />
-                <Page2 />
                 <Page3 />
+                <Page2 />
               </div>
             }
           />

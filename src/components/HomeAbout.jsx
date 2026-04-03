@@ -16,18 +16,8 @@ export default function HomeAbout() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              animate={{ y: [0, -15, 0] }}
-              transition={{
-                duration: 0.8,
-                ease: "easeOut",
-                y: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.8,
-                },
-              }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-[3/4] w-full max-w-[500px] mx-auto lg:mr-auto"
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/2] lg:aspect-[3/3] w-full max-w-[500px] mx-auto lg:mr-auto"
             >
               <img
                 src="/assets/about-img.png"
@@ -42,7 +32,18 @@ export default function HomeAbout() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.4,
+                ease: "easeOut",
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.0,
+                },
+              }}
               className="absolute -bottom-8 lg:bottom-12 -right-4 lg:-right-12 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(26,98,127,0.15)] max-w-[220px] border border-[#e8f1f5] z-20"
             >
               <div className="text-5xl font-mono font-bold text-[#03966a] mb-2">
@@ -125,7 +126,7 @@ export default function HomeAbout() {
                 to="/about"
                 className="group relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-[#03966a] text-[#022431] font-mono font-bold rounded-xl uppercase tracking-widest text-sm transition-all duration-300"
               >
-                <div className="absolute -inset-6 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+                <div className="absolute -inset-6 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
                 <span className="relative z-10 flex items-center gap-3 group-hover:text-[#022431] transition-colors duration-500">
                   Know More
                   <svg

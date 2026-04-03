@@ -22,7 +22,7 @@ export default function BlogPost() {
                 <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
                 <p className="text-[#03966a] mb-8">The blog post you're looking for doesn't exist.</p>
                 <Link to="/blog" className="group relative overflow-hidden px-6 py-3 bg-[#03966a] text-[#f5f9eb] font-bold rounded-full transition-all duration-300">
-                    <div className="absolute -inset-4 bg-[#e4d5b7] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+                    <div className="absolute -inset-4 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
                     <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">Return to Blog</span>
                 </Link>
             </div>

@@ -59,7 +59,7 @@ export default function Blog() {
       {/* //This container is 300vh tall to give scrolling distance on desktop, adjustable for mobile. */}
       <div ref={containerRef} className="h-[200vh] relative pt-10 md:pt-20">
         {/* sticky shell  holds the visual elements on screen */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-[#f8fffa]">
+        <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
           {/* Central Title */}
           <motion.div
             style={{ opacity: titleOpacity, y: titleY }}
@@ -200,7 +200,7 @@ export default function Blog() {
         BLOG section
    
       */}
-      <div className="relative z-10 bg-[#f8fffa] pt-20 md:pt-32 pb-32 md:pb-40 px-6 lg:px-20">
+      <div className="relative  pt-20 md:pt-32 pb-32 md:pb-40 px-6 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#03966a]">
