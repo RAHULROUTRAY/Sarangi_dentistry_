@@ -24,12 +24,20 @@ import CustomCursor from "./components/CustomCursor";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const isFirstMount = useRef(true);
 
   useLayoutEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
+    // 1. On initial mount (like a page refresh), we do NOT manually scroll to top.
+    // We let the browser's native scrollRestoration handle returning the user to their previous position.
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+      return;
     }
 
+    // 2. On subsequent route changes (clicking a link), we scroll to the top artificially.
     document.documentElement.style.scrollBehavior = "auto";
 
     window.scrollTo(0, 0);

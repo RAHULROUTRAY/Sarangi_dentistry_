@@ -132,6 +132,9 @@ export default function CustomCursor() {
 
       invertTargets.forEach((el) => {
         if (isInvert) return;
+        
+        if (window.getComputedStyle(el).visibility === 'hidden') return;
+        
         const rect = el.getBoundingClientRect();
 
         const insetX = Math.min(24, rect.width * 0.08);

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { TextAnimate } from "./TextAnimate";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,46 +9,76 @@ gsap.registerPlugin(ScrollTrigger);
 const HERO_PAIRS = [
   {
     head: "Radiant Smiles are Our Specialty",
-    subhead: "Sophisticated dental procedures and treatments tailored to enhance your smile with natural-looking results.",
+    subhead: "Sophisticated dental procedures and advanced treatments carefully tailored to enhance your smile, delivering natural-looking, long-lasting results that boost both confidence and overall oral health.",
+    image: "/assets/seat_1.jpg",
   },
   {
     head: "Artistic Smile Rejuvenation",
-    subhead: "Specializing in aesthetic and functional smile restorations using advanced dental implant methods, ranging from minimally invasive to ultra-modern laser surgeries.",
+    subhead: "Specializing in aesthetic and functional smile restorations, we utilize advanced dental implant techniques and cutting-edge procedures—ranging from minimally invasive solutions to ultra-modern laser surgeries—to deliver precise, comfortable, and long-lasting results tailored to each patient.",
+    image: "/assets/seat_2.jpg",
   },
   {
     head: "Confidence in Every Smile",
-    subhead: "Customized porcelain & ceramic crowns crafted with perfection showcasing quality craftsmanship and advanced technology to beautifully restore form, function, and vitality of your teeth.",
+    subhead: "Experience customized porcelain and ceramic crowns meticulously designed and crafted to perfection, combining superior craftsmanship with cutting-edge technology to restore the natural beauty, strength, and vitality of your teeth, delivering long-lasting results with a flawless, lifelike appearance.",
+    image: "/assets/seat_3.jpg",
   }
 ];
 
-const HeroTextCarousel = () => {
+const HeroCarousel = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % HERO_PAIRS.length);
-    }, 6000); 
+    }, 7000); 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="absolute inset-0 z-40 flex items-center justify-center px-4 sm:px-8 pointer-events-none">
-      <div className="w-full max-w-5xl flex flex-col items-center text-center">
-        <AnimatePresence mode="wait">
-          <div key={index} className="flex flex-col items-center gap-4 md:gap-6 w-full pointer-events-auto cursor-heading" data-cursor="invert">
-            <TextAnimate 
-              text={HERO_PAIRS[index].head} 
-              by="word"
-              className="block font-black font-['Futura','Helvetica_Neue','Arial',sans-serif] leading-[1] tracking-[-0.04em] text-[10vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[5vw] text-[rgba(85,138,120,0.95)]"
-            />
-            <TextAnimate 
-              text={HERO_PAIRS[index].subhead} 
-              by="word"
-              delay={0.5}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#3a555f] leading-relaxed max-w-[95%] md:max-w-[85%] font-medium"
-            />
-          </div>
-        </AnimatePresence>
+    <div className="absolute inset-0 z-40 flex items-center px-4 sm:px-10 lg:px-20 pointer-events-none">
+      <div className="w-full h-full max-w-7xl mx-auto flex items-center relative">
+        
+        {/* RIGHT SIDE IMAGE CAROUSEL */}
+        <div className="absolute right-0 top-[5%] md:top-1/2 md:-translate-y-1/2 w-[90%] md:w-[50%] h-[45vh] md:h-[75vh] flex items-center justify-end z-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ filter: "blur(20px)", opacity: 0 }}
+              animate={{ filter: "blur(0px)", opacity: 1 }}
+              exit={{ filter: "blur(20px)", opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="w-full h-full rounded-[32px] overflow-hidden shadow-2xl relative"
+            >
+              <img 
+                src={HERO_PAIRS[index].image} 
+                className="w-full h-full object-cover" 
+                alt="Clinic Setup" 
+              />
+              {/* Optional overlay to ensure text contrast if it goes over */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent mix-blend-overlay" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* LEFT SIDE TEXT CAROUSEL */}
+        <div className="relative z-10 w-full md:w-[60%] flex flex-col items-end text-right mt-[40vh] sm:mt-[45vh] md:mt-0 mb-[5%] md:mb-[8%]">
+          <AnimatePresence mode="wait">
+            <div key={index} className="flex flex-col items-end gap-4 md:gap-6 w-full pointer-events-auto cursor-heading" data-cursor="invert">
+              <TextAnimate 
+                text={HERO_PAIRS[index].head} 
+                by="word"
+                className="block font-black font-['Futura','Helvetica_Neue','Arial',sans-serif] leading-[1.05] tracking-[-0.04em] text-[clamp(2rem,7vw,5rem)] text-[#1e342b] drop-shadow-md pb-2"
+              />
+              <TextAnimate 
+                text={HERO_PAIRS[index].subhead} 
+                by="word"
+                delay={0.25}
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#1e342b] leading-relaxed max-w-[95%] md:max-w-[90%] font-semibold drop-shadow-sm"
+              />
+            </div>
+          </AnimatePresence>
+        </div>
+        
       </div>
     </div>
   );
@@ -57,52 +87,18 @@ const HeroTextCarousel = () => {
 const Hero = () => {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
-
-  const imageCard1Ref = useRef(null);
-  const imageCard2Ref = useRef(null);
-  const imageCard3Ref = useRef(null);
-
-  const mobileImageCard1Ref = useRef(null);
-  const mobileImageCard2Ref = useRef(null);
-  const mobileImageCard3Ref = useRef(null);
-
   const videoAnchorRef = useRef(null);
   const videoOverlayRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(
-        [
-          imageCard1Ref.current,
-          imageCard2Ref.current,
-          imageCard3Ref.current,
-          mobileImageCard1Ref.current,
-          mobileImageCard2Ref.current,
-          mobileImageCard3Ref.current,
-        ],
-        { opacity: 0, y: 80 },
-      );
-
       gsap.set(videoOverlayRef.current, { opacity: 0, y: 60 });
 
       const introTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       introTl.to(
-        [
-          imageCard1Ref.current,
-          imageCard2Ref.current,
-          imageCard3Ref.current,
-          mobileImageCard1Ref.current,
-          mobileImageCard2Ref.current,
-          mobileImageCard3Ref.current,
-          videoOverlayRef.current,
-        ],
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.08,
-        },
+        [videoOverlayRef.current],
+        { opacity: 1, y: 0, duration: 0.9 },
         0.2,
       );
     }, containerRef);
@@ -111,14 +107,7 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      !containerRef.current ||
-      !videoAnchorRef.current ||
-      !videoOverlayRef.current ||
-      !contentRef.current
-    ) {
-      return;
-    }
+    if (!containerRef.current || !videoAnchorRef.current || !videoOverlayRef.current || !contentRef.current) return;
 
     const ctx = gsap.context(() => {
       const container = containerRef.current;
@@ -140,7 +129,7 @@ const Hero = () => {
           zIndex: 25,
           x: 0,
           y: 0,
-          rotate: -6,
+          rotate: 0,
           force3D: true,
           transformOrigin: "center center",
           autoAlpha: 1,
@@ -161,32 +150,8 @@ const Hero = () => {
         },
       });
 
-      tl.to(
-        overlay,
-        {
-          left: 0,
-          top: 0,
-          width: "100%",
-          height: "100%",
-          borderRadius: 0,
-          rotate: 0,
-          ease: "none",
-          duration: 1,
-        },
-        0,
-      );
-
-      tl.to(
-        content,
-        {
-          autoAlpha: 0,
-          scale: 0.99,
-          ease: "none",
-          duration: 0.7,
-        },
-        0.05,
-      );
-
+      tl.to(overlay, { left: 0, top: 0, width: "100%", height: "100%", borderRadius: 0, rotate: 0, ease: "none", duration: 1 }, 0);
+      tl.to(content, { autoAlpha: 0, scale: 0.99, ease: "none", duration: 0.7 }, 0.05);
       tl.to({}, { duration: 0.25 });
 
       const handleResize = () => {
@@ -205,114 +170,19 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative z-40 h-screen w-full overflow-hidden isolate"
-    >
-      <div
-        ref={contentRef}
-        className="relative z-30 flex h-full w-full items-center justify-center px-4 sm:px-6 md:px-10"
-      >
-        <div
-          ref={imageCard1Ref}
-          className="absolute left-[4%] top-[12%] hidden md:block w-[14vw] max-w-[220px] min-w-[140px]"
-        >
-          <div className="rotate-[-6deg] origin-center">
-            <div className="relative overflow-hidden rounded-[32px_32px_10px_32px] shadow-[0_22px_70px_rgba(0,0,0,0.10)]">
-              <img
-                src="/assets/seat_1.jpg"
-                alt="Dental clinic chair"
-                className="h-[18vw] max-h-[280px] min-h-[180px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={imageCard2Ref}
-          className="absolute right-[6%] top-[14%] hidden md:block w-[16vw] max-w-[250px] min-w-[150px]"
-        >
-          <div className="rotate-[5deg] origin-center">
-            <div className="relative overflow-hidden rounded-[999px] shadow-[0_22px_70px_rgba(0,0,0,0.10)]">
-              <img
-                src="/assets/seat_2.jpg"
-                alt="Dental clinic interior"
-                className="h-[11vw] max-h-[180px] min-h-[120px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={imageCard3Ref}
-          className="absolute right-[10%] bottom-[12%] hidden md:block w-[15vw] max-w-[230px] min-w-[150px]"
-        >
-          <div className="rotate-[7deg] origin-center">
-            <div className="relative overflow-hidden rounded-[22px_48px_22px_48px] shadow-[0_22px_70px_rgba(0,0,0,0.10)]">
-              <img
-                src="/assets/seat_3.jpg"
-                alt="Dental setup"
-                className="h-[17vw] max-h-[260px] min-h-[170px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={mobileImageCard1Ref}
-          className="absolute left-[6%] top-[18%] md:hidden w-[22vw] max-w-[110px]"
-        >
-          <div className="rotate-[-6deg] origin-center">
-            <div className="relative overflow-hidden rounded-[24px_24px_8px_24px] shadow-[0_14px_34px_rgba(0,0,0,0.09)]">
-              <img
-                src="/assets/seat_1.jpg"
-                alt="Dental clinic chair"
-                className="h-[28vw] max-h-[130px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={mobileImageCard2Ref}
-          className="absolute right-[6%] top-[19%] md:hidden w-[24vw] max-w-[120px]"
-        >
-          <div className="rotate-[5deg] origin-center">
-            <div className="relative overflow-hidden rounded-[999px] shadow-[0_14px_34px_rgba(0,0,0,0.09)]">
-              <img
-                src="/assets/seat_2.jpg"
-                alt="Dental clinic interior"
-                className="h-[18vw] max-h-[90px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={mobileImageCard3Ref}
-          className="absolute left-[8%] bottom-[18%] md:hidden w-[22vw] max-w-[110px]"
-        >
-          <div className="rotate-[6deg] origin-center">
-            <div className="relative overflow-hidden rounded-[18px_34px_18px_34px] shadow-[0_14px_34px_rgba(0,0,0,0.09)]">
-              <img
-                src="/assets/seat_3.jpg"
-                alt="Dental setup"
-                className="h-[28vw] max-h-[130px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <HeroTextCarousel />
+    <section ref={containerRef} className="relative z-40 h-screen w-full overflow-hidden isolate">
+      <div ref={contentRef} className="relative z-30 flex h-full w-full items-center justify-center">
+        
+        <HeroCarousel />
 
         <div
           ref={videoAnchorRef}
           className="
             absolute z-0 opacity-0 pointer-events-none
-            left-[56%] bottom-[8%] w-[28vw] h-[18vw]
-            sm:left-[58%] sm:bottom-[8%] sm:w-[24vw] sm:h-[15vw]
-            md:left-[12%] md:bottom-[6%] md:w-[18vw] md:h-[11vw]
-            lg:left-[10%] lg:bottom-[12%] lg:w-[17vw] lg:h-[11vw]
+            left-[4%] bottom-[2%] w-[35vw] h-[25vw]
+            sm:left-[5%] sm:bottom-[5%] sm:w-[30vw] sm:h-[20vw]
+            md:left-[6%] md:bottom-[6%] md:w-[22vw] md:h-[14vw]
+            lg:left-[8%] lg:bottom-[8%] lg:w-[18vw] lg:h-[11vw]
           "
         />
       </div>
@@ -322,25 +192,13 @@ const Hero = () => {
         className="pointer-events-none absolute z-[25] overflow-hidden bg-black will-change-[width,height,left,top,border-radius,transform]"
         style={{ width: 0, height: 0 }}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        >
+        <video autoPlay loop muted playsInline className="absolute inset-0 h-full w-full object-cover">
           <source src="/assets/Dental-video.mp4" type="video/mp4" />
         </video>
-
         <div className="absolute inset-0 bg-black/10" />
-
         <div className="absolute left-3 bottom-3 z-30 text-left text-white md:left-4 md:bottom-4">
-          <p className="text-[9px] font-medium uppercase tracking-[0.18em] sm:text-[10px]">
-            Clinic Tour
-          </p>
-          <p className="mt-1 text-[11px] leading-tight sm:text-xs md:text-sm">
-            Scroll to enter
-          </p>
+          <p className="text-[9px] font-medium uppercase tracking-[0.18em] sm:text-[10px]">Clinic Tour</p>
+          <p className="mt-1 text-[11px] leading-tight sm:text-xs md:text-sm">Scroll to enter</p>
         </div>
       </div>
     </section>
