@@ -124,10 +124,10 @@ export default function HomeAbout() {
             >
               <Link
                 to="/about"
-                className="group relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-[#03966a] text-[#022431] font-mono font-bold rounded-xl uppercase tracking-widest text-sm transition-all duration-300"
+                className="group relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-[#03966a] text-[#FFFFFF] font-mono font-bold rounded-xl uppercase tracking-widest text-sm transition-all duration-300"
               >
                 <div className="absolute -inset-6 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
-                <span className="relative z-10 flex items-center gap-3 group-hover:text-[#022431] transition-colors duration-500">
+                <span className="relative z-10 flex items-center gap-3 group-hover:text-[#000000] transition-colors duration-500">
                   Know More
                   <svg
                     className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"

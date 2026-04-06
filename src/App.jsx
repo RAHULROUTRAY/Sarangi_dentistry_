@@ -21,6 +21,7 @@ import BookAppointmentPage from "./components/BookAppointmentPage";
 import CertificationPage from "./components/CertificationPage";
 import GalleryPage from "./components/GalleryPage";
 import CustomCursor from "./components/CustomCursor";
+import { ScrollVelocityContainer, ScrollVelocityRow } from "./components/ScrollVelocity";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -68,12 +69,24 @@ function App() {
           <Route
             path="/"
             element={
-              <div 
-                className="bg-[#f8fffa] bg-fixed bg-center bg-cover bg-no-repeat"
-                style={{ backgroundImage: "url('/assets/sketch%20it%20-sarangi.png')" }}
-              >
+              <div className="bg-[#f8fffa]">
                 <Hero />
                 <HomeAbout />
+                
+                {/* Scroll Based Velocity Animation */}
+                <div className="relative flex w-full mt-10 mb-20 flex-col items-center justify-center overflow-hidden text-black">
+                  <ScrollVelocityContainer className="text-5xl font-black uppercase tracking-[-0.02em] md:text-7xl md:leading-[5rem]">
+                    <ScrollVelocityRow baseVelocity={2} direction={1}>
+                      Premium Dental Care • Modern Technology •
+                    </ScrollVelocityRow>
+                    <ScrollVelocityRow baseVelocity={3} direction={-1}>
+                      Radiant Smiles • Artistic Rejuvenation •
+                    </ScrollVelocityRow>
+                  </ScrollVelocityContainer>
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#f8fffa] to-transparent"></div>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#f8fffa] to-transparent"></div>
+                </div>
+
                 <Page3 />
                 <Page2 />
               </div>

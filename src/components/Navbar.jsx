@@ -180,7 +180,7 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`md:hidden fixed inset-x-0 top-0 w-4/5 max-w-sm bg-[color:rgb(65_88_67/0.9)] backdrop-blur-xl shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`md:hidden fixed inset-y-0 left-0 h-[100dvh] z-50 w-4/5 max-w-sm bg-[color:rgb(65_88_67/0.9)] backdrop-blur-xl shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
       >
         <div className="flex flex-col h-full pt-20 px-6 overflow-y-auto">
