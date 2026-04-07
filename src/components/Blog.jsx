@@ -18,7 +18,7 @@ export default function Blog() {
   });
 
   // 1. Central Image Scale: Starts large (3x to cover screen), shrinks to 1x
-  const centerScale = useTransform(scrollYProgress, [0, 0.9], [3, 1]);
+  const centerScale = useTransform(scrollYProgress, [0, 0.8], [3, 1]);
   // 2. Central Image Opacity (optional subtle fade-in of the image itself, but usually starts at 1)
 
   // 3. Central Title Opacity: Fades out as we start scrolling
@@ -30,34 +30,34 @@ export default function Blog() {
   // Values are defined as [start position, end position (0 means resting in their grid cell)]
 
   // Top row
-  const tlX = useTransform(scrollYProgress, [0.1, 0.9], ["-100vw", "0vw"]);
-  const tlY = useTransform(scrollYProgress, [0.1, 0.9], ["-100vh", "0vh"]);
+  const tlX = useTransform(scrollYProgress, [0.05, 0.8], ["-100vw", "0vw"]);
+  const tlY = useTransform(scrollYProgress, [0.05, 0.8], ["-100vh", "0vh"]);
 
-  const tcY = useTransform(scrollYProgress, [0.1, 0.9], ["-100vh", "0vh"]);
+  const tcY = useTransform(scrollYProgress, [0.05, 0.8], ["-100vh", "0vh"]);
 
-  const trX = useTransform(scrollYProgress, [0.1, 0.9], ["100vw", "0vw"]);
-  const trY = useTransform(scrollYProgress, [0.1, 0.9], ["-100vh", "0vh"]);
+  const trX = useTransform(scrollYProgress, [0.05, 0.8], ["100vw", "0vw"]);
+  const trY = useTransform(scrollYProgress, [0.05, 0.8], ["-100vh", "0vh"]);
 
   // Middle row (sides)
-  const mlX = useTransform(scrollYProgress, [0.1, 0.9], ["-100vw", "0vw"]);
-  const mrX = useTransform(scrollYProgress, [0.1, 0.9], ["100vw", "0vw"]);
+  const mlX = useTransform(scrollYProgress, [0.05, 0.8], ["-100vw", "0vw"]);
+  const mrX = useTransform(scrollYProgress, [0.05, 0.8], ["100vw", "0vw"]);
 
   // Bottom row
-  const blX = useTransform(scrollYProgress, [0.1, 0.9], ["-100vw", "0vw"]);
-  const blY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
+  const blX = useTransform(scrollYProgress, [0.05, 0.8], ["-100vw", "0vw"]);
+  const blY = useTransform(scrollYProgress, [0.05, 0.8], ["100vh", "0vh"]);
 
-  const bcY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
+  const bcY = useTransform(scrollYProgress, [0.05, 0.8], ["100vh", "0vh"]);
 
-  const brX = useTransform(scrollYProgress, [0.1, 0.9], ["100vw", "0vw"]);
-  const brY = useTransform(scrollYProgress, [0.1, 0.9], ["100vh", "0vh"]);
+  const brX = useTransform(scrollYProgress, [0.05, 0.8], ["100vw", "0vw"]);
+  const brY = useTransform(scrollYProgress, [0.05, 0.8], ["100vh", "0vh"]);
 
   // Fade
-  const surroundOpacity = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
+  const surroundOpacity = useTransform(scrollYProgress, [0.05, 0.8], [0, 1]);
 
   return (
     <div>
-      {/* //This container is 300vh tall to give scrolling distance on desktop, adjustable for mobile. */}
-      <div ref={containerRef} className="h-[200vh] relative pt-10 md:pt-20">
+      {/* //This container gives scrolling distance. On mobile it's shorter for faster animation. */}
+      <div ref={containerRef} className="h-[150vh] md:h-[200vh] relative pt-10 md:pt-20">
         {/* sticky shell  holds the visual elements on screen */}
         <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
           {/* Central Title */}
@@ -78,11 +78,11 @@ export default function Blog() {
              scale the central image dynamically but position the others relative to a grid
           */}
           <div className="relative w-full max-w-6xl mx-auto aspect-[3/4] md:aspect-[21/9] lg:aspect-video px-4 md:p-10 mt-20 md:mt-0">
-            <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-4 lg:grid-rows-3 gap-3 md:gap-4 w-full h-full relative z-10">
+            <div className="grid grid-cols-3 grid-rows-3 gap-3 md:gap-4 w-full h-full relative z-10">
               {/* Top Left */}
               <motion.div
                 style={{ x: tlX, y: tlY, opacity: surroundOpacity }}
-                className="hidden lg:block w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/3-Qualities-To-Look-For.jpg"
@@ -127,10 +127,10 @@ export default function Blog() {
                 />
               </motion.div>
 
-              {/* Middle Center (Hero on Mobile is explicitly larger) */}
+              {/* Middle Center (Hero) */}
               <motion.div
                 style={{ scale: centerScale }}
-                className="col-span-2 lg:col-span-1 row-span-2 lg:row-span-1 w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-0 relative isolate"
+                className="w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-0 relative isolate"
               >
                 {/* A subtle overlay */}
                 <motion.div
