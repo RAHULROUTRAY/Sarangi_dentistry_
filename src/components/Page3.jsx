@@ -100,7 +100,7 @@ export default function Page3() {
       <div className="z-10 w-full max-w-7xl mx-auto">
 
         {/* Split Layout Container */}
-        <div className="flex flex-col xl:flex-row items-center xl:items-start justify-between gap-16 xl:gap-8">
+        <div className="flex flex-col xl:flex-row items-center xl:items-start justify-between gap-8 md:gap-12 xl:gap-8">
 
           {/* LEFT SIDE: Text Content & Supportive Imagery */}
           <div className="w-full xl:w-5/12 text-[#03966a] text-center xl:text-left pt-0 xl:pt-20">
@@ -141,7 +141,7 @@ export default function Page3() {
   whileInView={{ opacity: 1, x: 0 }}
   viewport={{ once: true }}
   transition={{ duration: 1, delay: 0.8 }}
-  className="flex items-left justify-center xl:justify-start gap-8 border-t border-[#f3eff5] pt-8 mt-12 pl-6"
+  className="flex items-left justify-center xl:justify-start gap-8 border-t border-[#f3eff5] pt-6 md:pt-8 mt-8 md:mt-12 pl-0 xl:pl-6"
 >
   <div>
     <h4 className="text-5xl font-mono font-bold mb-1 border-b-2 border-[#f3eff5] pb-2 inline-block">
@@ -166,7 +166,7 @@ export default function Page3() {
           </div>
 
           {/* RIGHT SIDE: Interactive Visuals */}
-          <div className="w-full xl:w-6/12 flex flex-col items-center relative min-h-[700px] xl:min-h-[650px] justify-center mt-10 xl:mt-0">
+          <div className="w-full xl:w-6/12 flex flex-col items-center relative min-h-[500px] md:min-h-[600px] xl:min-h-[650px] justify-center mt-0 xl:mt-0">
 
             {/* Superimposed Circular Image Backdrop */}
             <motion.div

@@ -11,13 +11,13 @@ export default function HomeAbout() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Left Side: Image Composition */}
-          <div className="w-full lg:w-1/2 relative">
+          <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/2] lg:aspect-[3/3] w-full max-w-[500px] mx-auto lg:mr-auto"
+              className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[4/2] lg:aspect-[3/3] w-[85%] sm:w-[90%] md:w-full max-w-[500px] mx-auto lg:mr-auto"
             >
               <img
                 src="/assets/about-img.png"
@@ -44,12 +44,12 @@ export default function HomeAbout() {
                   delay: 1.0,
                 },
               }}
-              className="absolute -bottom-8 lg:bottom-12 -right-4 lg:-right-12 bg-white p-6 rounded-2xl shadow-[0_20px_40px_rgba(26,98,127,0.15)] max-w-[220px] border border-[#e8f1f5] z-20"
+              className="absolute -bottom-6 md:-bottom-8 lg:bottom-12 -right-0 md:-right-4 lg:-right-12 bg-white p-4 md:p-6 rounded-2xl shadow-[0_20px_40px_rgba(26,98,127,0.15)] max-w-[170px] md:max-w-[220px] border border-[#e8f1f5] z-20"
             >
-              <div className="text-5xl font-mono font-bold text-[#03966a] mb-2">
+              <div className="text-4xl md:text-5xl font-mono font-bold text-[#03966a] mb-1 md:mb-2">
                 36<span className="text-[#c0d2d8]">+</span>
               </div>
-              <p className="font-mono text-sm font-bold text-[#022431] uppercase tracking-widest leading-relaxed">
+              <p className="font-mono text-xs md:text-sm font-bold text-[#022431] uppercase tracking-widest leading-snug md:leading-relaxed">
                 Years Experience Overall
               </p>
             </motion.div>
@@ -65,7 +65,7 @@ export default function HomeAbout() {
                 duration: 0.6,
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
               }}
-              className="hidden md:block absolute top-12 -left-16 w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white z-20"
+              className="absolute -top-6 md:top-12 -left-2 md:-left-16 w-28 h-28 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-xl border-[3px] md:border-4 border-white z-20"
             >
               <img
                 src="/assets/DSC_0005-Copy-scaled.jpg"

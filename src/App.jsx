@@ -75,11 +75,11 @@ function App() {
                 
                 {/* Scroll Based Velocity Animation */}
                 <div className="relative flex w-full mt-10 mb-20 flex-col items-center justify-center overflow-hidden text-black">
-                  <ScrollVelocityContainer className="text-5xl font-black uppercase tracking-[-0.02em] md:text-7xl md:leading-[5rem]">
-                    <ScrollVelocityRow baseVelocity={2} direction={1}>
+                  <ScrollVelocityContainer className="text-3xl sm:text-4xl md:text-7xl font-black uppercase tracking-[-0.02em] md:leading-[5rem]">
+                    <ScrollVelocityRow baseVelocity={1} direction={1}>
                       Premium Dental Care • Modern Technology •
                     </ScrollVelocityRow>
-                    <ScrollVelocityRow baseVelocity={3} direction={-1}>
+                    <ScrollVelocityRow baseVelocity={1.5} direction={-1}>
                       Radiant Smiles • Artistic Rejuvenation •
                     </ScrollVelocityRow>
                   </ScrollVelocityContainer>
