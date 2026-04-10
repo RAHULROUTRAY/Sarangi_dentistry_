@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { certificationsData } from "../data/certificationData";
 
 const CertificationPage = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
   // Close on Escape key
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setSelectedCert(null);
     };

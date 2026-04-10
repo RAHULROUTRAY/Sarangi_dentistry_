@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const quickLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
@@ -193,8 +195,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#c0d2d8] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} Sarangi Dentistry. All rights
-            reserved.
+            &copy; {CURRENT_YEAR} Sarangi Dentistry. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm text-[#81a4b1]">
             <Link

@@ -1,27 +1,30 @@
-import { useLayoutEffect, useRef } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import HomeAbout from "./components/HomeAbout";
-import Page3 from "./components/Page3";
-import Page2 from "./components/Page2";
-import Footer from "./components/Footer";
+import AboutPage from "./components/AboutPageNew";
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
-import AboutPage from "./components/AboutPageNew";
-import Procedures from "./components/Procedures";
-import ProcedureDetail from "./components/ProcedureDetail";
-import ContactPage from "./components/ContactPage";
 import BookAppointmentPage from "./components/BookAppointmentPage";
 import CertificationPage from "./components/CertificationPage";
-import GalleryPage from "./components/GalleryPage";
+import ContactPage from "./components/ContactPage";
 import CustomCursor from "./components/CustomCursor";
-import { ScrollVelocityContainer, ScrollVelocityRow } from "./components/ScrollVelocity";
+import Footer from "./components/Footer";
+import GalleryPage from "./components/GalleryPage";
+import Hero from "./components/Hero";
+import HomeAbout from "./components/HomeAbout";
+import Navbar from "./components/Navbar";
+import Page2 from "./components/Page2";
+import Page3 from "./components/Page3";
+import ProcedureDetail from "./components/ProcedureDetail";
+import Procedures from "./components/Procedures";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "./components/ScrollVelocity";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -56,15 +59,13 @@ function ScrollToTop() {
 }
 
 function App() {
-  const mainRef = useRef(null);
-
   return (
     <div className="relative min-h-screen">
       <CustomCursor />
       <ScrollToTop />
       <Navbar />
 
-      <main ref={mainRef} id="main" className="relative w-full">
+      <main id="main" className="relative w-full">
         <Routes>
           <Route
             path="/"
@@ -72,14 +73,14 @@ function App() {
               <div className="bg-[#f8fffa]">
                 <Hero />
                 <HomeAbout />
-                
+
                 {/* Scroll Based Velocity Animation */}
                 <div className="relative flex w-full mt-10 mb-20 flex-col items-center justify-center overflow-hidden text-black">
-                  <ScrollVelocityContainer className="text-3xl sm:text-4xl md:text-7xl font-black uppercase tracking-[-0.02em] md:leading-[5rem]">
-                    <ScrollVelocityRow baseVelocity={1} direction={1}>
+                  <ScrollVelocityContainer className="text-5xl font-black uppercase tracking-[-0.02em] md:text-7xl md:leading-[5rem]">
+                    <ScrollVelocityRow baseVelocity={2} direction={1}>
                       Premium Dental Care • Modern Technology •
                     </ScrollVelocityRow>
-                    <ScrollVelocityRow baseVelocity={1.5} direction={-1}>
+                    <ScrollVelocityRow baseVelocity={3} direction={-1}>
                       Radiant Smiles • Artistic Rejuvenation •
                     </ScrollVelocityRow>
                   </ScrollVelocityContainer>
@@ -95,7 +96,6 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<Page3 />} />
           <Route path="/procedure" element={<Procedures />} />
           <Route path="/procedure/:id" element={<ProcedureDetail />} />

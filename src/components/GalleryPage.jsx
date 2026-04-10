@@ -1,10 +1,44 @@
-import React, { useMemo } from "react";
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 import { galleryImages } from "../data/galleryData";
+
+const MarqueeRow = ({ images, speed }) => {
+  const duplicatedImages = [...images, ...images];
+
+  return (
+    <div className="flex w-[200%] items-center gap-6 py-8">
+      <motion.div
+        className="flex w-1/2 justify-around gap-6"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{
+          ease: "linear",
+          duration: speed,
+          repeat: Infinity,
+          repeatType: "loop",
+        }}
+      >
+        {duplicatedImages.map((src, i) => (
+          <div
+            key={`${i}-${src}`}
+            className="relative h-[45vh] lg:h-[55vh] w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] xl:w-[25vw] rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(26,98,127,0.15)] group shrink-0 border-4 border-white transform transition-transform duration-500 hover:scale-[1.03] hover:z-20"
+          >
+            <img
+              src={src}
+              alt="Clinic Gallery"
+              className="w-full h-full object-cover transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500" />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 const GalleryPage = () => {
   const images = useMemo(() => {
-    let baseImages =
+    const baseImages =
       galleryImages.length > 0
         ? galleryImages
         : [
@@ -18,40 +52,6 @@ const GalleryPage = () => {
     }
     return filled;
   }, []);
-
-  const MarqueeRow = ({ images, speed }) => {
-    const duplicatedImages = [...images, ...images];
-
-    return (
-      <div className="flex w-[200%] items-center gap-6 py-8">
-        <motion.div
-          className="flex w-1/2 justify-around gap-6"
-          animate={{ x: ["0%", "-100%"] }}
-          transition={{
-            ease: "linear",
-            duration: speed,
-            repeat: Infinity,
-            repeatType: "loop",
-          }}
-        >
-          {duplicatedImages.map((src, i) => (
-            <div
-              key={`${i}-${src}`}
-              className="relative h-[45vh] lg:h-[55vh] w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] xl:w-[25vw] rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(26,98,127,0.15)] group shrink-0 border-4 border-white transform transition-transform duration-500 hover:scale-[1.03] hover:z-20"
-            >
-              <img
-                src={src}
-                alt="Clinic Gallery"
-                className="w-full h-full object-cover transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500" />
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    );
-  };
 
   return (
     <div className="bg-[#f8fffa] min-h-screen w-full overflow-hidden flex flex-col relative">

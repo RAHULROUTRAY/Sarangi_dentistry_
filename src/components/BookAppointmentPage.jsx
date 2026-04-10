@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function BookAppointmentPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const submitTimerRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    return () => {
+      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    };
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    submitTimerRef.current = setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (
@@ -141,7 +146,9 @@ export default function BookAppointmentPage() {
                 className="group relative overflow-hidden w-full bg-[#022431] text-white font-bold font-mono py-4 rounded-2xl shadow-[0_10px_20px_rgba(26,98,127,0.2)] mt-4 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className="absolute -inset-4 bg-[#00ebb0] translate-x-[-120%] skew-x-12 group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
-                <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">SUBMIT REQUEST</span>
+                <span className="relative z-10 group-hover:text-[#022431] transition-colors duration-500">
+                  SUBMIT REQUEST
+                </span>
               </button>
             </form>
 

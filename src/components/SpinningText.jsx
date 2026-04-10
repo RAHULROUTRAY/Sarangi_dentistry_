@@ -1,7 +1,11 @@
-import React from 'react';
 import { motion } from "framer-motion";
 
-export function SpinningText({ children, className = "", duration = 15, radius = 5 }) {
+export function SpinningText({
+  children,
+  className = "",
+  duration = 15,
+  radius = 5,
+}) {
   const letters = children.split("");
 
   return (
@@ -32,7 +36,7 @@ export function SpinningText({ children, className = "", duration = 15, radius =
 export function SpinningTextBasic() {
   return (
     <SpinningText radius={4.5} duration={12}>
-      shine more • care more • smile more • 
+      shine more • care more • smile more •
     </SpinningText>
   );
 }

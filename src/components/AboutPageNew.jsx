@@ -1,5 +1,52 @@
-import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+const PILLARS = [
+  {
+    title: "Our Commitment to Excellence",
+    text: "With a focus on preventive dentistry and patient education, we strive for excellence in every aspect of our practice. Our dedication to quality is evident in the materials and equipment we utilize, backed by warranties wherever applicable.",
+  },
+  {
+    title: "Patient-Centered Approach",
+    text: "Understanding that each individual has unique needs, we prioritize thorough discussions of treatment plans and payment options with our patients. We aim to empower you with personalized preventive and treatment strategies.",
+  },
+  {
+    title: "Unmatched Team of Specialists",
+    text: "Our team comprises highly trained and experienced dental specialist Dr. Soumendra Sarangi, a well-renowned professional in the dentistry field. We set and maintain stringent quality benchmarks.",
+  },
+  {
+    title: "Stringent Sterilization Protocols",
+    text: "At Sarangi Dentistry, we uphold the highest standards of hygiene and sterilization. Our dedicated sterilization room and meticulous instrument handling protocols guarantee a safe and sterile environment for our patients.",
+  },
+];
+
+const VALUES = [
+  {
+    num: "01",
+    title: "Excellence",
+    desc: "We uphold the highest standards of clinical excellence and continually invest in advanced technologies and techniques to deliver superior dental care.",
+  },
+  {
+    num: "02",
+    title: "Compassion",
+    desc: "Your comfort and satisfaction are our top priorities. We approach each patient with empathy, understanding, and a gentle touch.",
+  },
+  {
+    num: "03",
+    title: "Integrity",
+    desc: "We are dedicated to honesty, transparency, and ethical practices in all aspects of our work.",
+  },
+  {
+    num: "04",
+    title: "Collaboration",
+    desc: "We believe in teamwork and collaborate closely with our patients to develop personalized treatment plans that meet their needs and goals.",
+  },
+  {
+    num: "05",
+    title: "Community",
+    desc: "We are proud to serve the local community and actively participate in outreach programs and initiatives to promote oral health education and awareness.",
+  },
+];
 
 export default function AboutPage() {
   const sceneRef = useRef(null);
@@ -144,24 +191,7 @@ export default function AboutPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  title: "Our Commitment to Excellence",
-                  text: "With a focus on preventive dentistry and patient education, we strive for excellence in every aspect of our practice. Our dedication to quality is evident in the materials and equipment we utilize, backed by warranties wherever applicable.",
-                },
-                {
-                  title: "Patient-Centered Approach",
-                  text: "Understanding that each individual has unique needs, we prioritize thorough discussions of treatment plans and payment options with our patients. We aim to empower you with personalized preventive and treatment strategies.",
-                },
-                {
-                  title: "Unmatched Team of Specialists",
-                  text: "Our team comprises highly trained and experienced dental specialist Dr. Soumendra Sarangi, a well-renowned professional in the dentistry field. We set and maintain stringent quality benchmarks.",
-                },
-                {
-                  title: "Stringent Sterilization Protocols",
-                  text: "At Sarangi Dentistry, we uphold the highest standards of hygiene and sterilization. Our dedicated sterilization room and meticulous instrument handling protocols guarantee a safe and sterile environment for our patients.",
-                },
-              ].map((item, i) => (
+              {PILLARS.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
@@ -175,7 +205,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-[#3a555f] leading-relaxed">{item.text}</p>
                 </motion.div>
-              ))}
+              ))}{" "}
             </div>
           </motion.section>
 
@@ -230,33 +260,7 @@ export default function AboutPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-              {[
-                {
-                  num: "01",
-                  title: "Excellence",
-                  desc: "We uphold the highest standards of clinical excellence and continually invest in advanced technologies and techniques to deliver superior dental care.",
-                },
-                {
-                  num: "02",
-                  title: "Compassion",
-                  desc: "Your comfort and satisfaction are our top priorities. We approach each patient with empathy, understanding, and a gentle touch.",
-                },
-                {
-                  num: "03",
-                  title: "Integrity",
-                  desc: "We are dedicated to honesty, transparency, and ethical practices in all aspects of our work.",
-                },
-                {
-                  num: "04",
-                  title: "Collaboration",
-                  desc: "We believe in teamwork and collaborate closely with our patients to develop personalized treatment plans that meet their needs and goals.",
-                },
-                {
-                  num: "05",
-                  title: "Community",
-                  desc: "We are proud to serve the local community and actively participate in outreach programs and initiatives to promote oral health education and awareness.",
-                },
-              ].map((v, i) => (
+              {VALUES.map((v, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.92 }}

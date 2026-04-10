@@ -57,7 +57,7 @@ export default function Blog() {
   return (
     <div>
       {/* //This container gives scrolling distance. On mobile it's shorter for faster animation. */}
-      <div ref={containerRef} className="h-[150vh] md:h-[200vh] relative pt-10 md:pt-20">
+      <div ref={containerRef} className="h-[150vh] tablet:h-[200vh] relative pt-10 tablet:pt-20">
         {/* sticky shell  holds the visual elements on screen */}
         <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
           {/* Central Title */}
@@ -65,10 +65,10 @@ export default function Blog() {
             style={{ opacity: titleOpacity, y: titleY }}
             className="absolute z-20 pointer-events-none text-center px-4"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase mb-4 text-white drop-shadow-2xl">
+            <h1 className="text-5xl tablet:text-7xl desktop:text-8xl font-black tracking-tighter uppercase mb-4 text-white drop-shadow-2xl">
               Capturing <br /> The Pulse
             </h1>
-            <p className="text-xl md:text-2xl font-light text-white">
+            <p className="text-xl tablet:text-2xl font-light text-white">
               Scroll down to know more.
             </p>
           </motion.div>
@@ -77,12 +77,12 @@ export default function Blog() {
             THE 3x3 GRID 
              scale the central image dynamically but position the others relative to a grid
           */}
-          <div className="relative w-full max-w-6xl mx-auto aspect-[3/4] md:aspect-[21/9] lg:aspect-video px-4 md:p-10 mt-20 md:mt-0">
-            <div className="grid grid-cols-3 grid-rows-3 gap-3 md:gap-4 w-full h-full relative z-10">
+          <div className="relative w-full max-w-6xl mx-auto aspect-[3/4] tablet:aspect-[21/9] desktop:aspect-video px-4 tablet:p-10 mt-20 tablet:mt-0">
+            <div className="grid grid-cols-3 grid-rows-3 gap-3 tablet:gap-4 w-full h-full relative z-10">
               {/* Top Left */}
               <motion.div
                 style={{ x: tlX, y: tlY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/3-Qualities-To-Look-For.jpg"
@@ -94,7 +94,7 @@ export default function Blog() {
               {/* Top Center */}
               <motion.div
                 style={{ y: tcY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/Dental-Health-Checkup.jpg"
@@ -106,7 +106,7 @@ export default function Blog() {
               {/* Top Right */}
               <motion.div
                 style={{ x: trX, y: trY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/dental-check-up-fleet-hampshire.jpg"
@@ -118,7 +118,7 @@ export default function Blog() {
               {/* Middle Left */}
               <motion.div
                 style={{ x: mlX, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/dental-staff.webp"
@@ -130,7 +130,7 @@ export default function Blog() {
               {/* Middle Center (Hero) */}
               <motion.div
                 style={{ scale: centerScale }}
-                className="w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-0 relative isolate"
+                className="w-full h-full rounded-xl tablet:rounded-2xl overflow-hidden shadow-2xl z-0 relative isolate"
               >
                 {/* A subtle overlay */}
                 <motion.div
@@ -147,7 +147,7 @@ export default function Blog() {
               {/* Middle Right */}
               <motion.div
                 style={{ x: mrX, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/Medline.jpg"
@@ -159,7 +159,7 @@ export default function Blog() {
               {/* Bottom Left */}
               <motion.div
                 style={{ x: blX, y: blY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/teeth.png"
@@ -171,7 +171,7 @@ export default function Blog() {
               {/* Bottom Center */}
               <motion.div
                 style={{ y: bcY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/3-Qualities-To-Look-For.jpg"
@@ -183,7 +183,7 @@ export default function Blog() {
               {/* Bottom Right */}
               <motion.div
                 style={{ x: brX, y: brY, opacity: surroundOpacity }}
-                className="w-full h-full rounded-lg md:rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full h-full rounded-lg tablet:rounded-2xl overflow-hidden shadow-2xl"
               >
                 <img
                   src="/assets/Dental-Health-Checkup.jpg"
@@ -200,10 +200,10 @@ export default function Blog() {
         BLOG section
    
       */}
-      <div className="relative  pt-20 md:pt-32 pb-32 md:pb-40 px-6 lg:px-20">
+      <div className="relative  pt-20 tablet:pt-32 pb-32 tablet:pb-40 px-6 desktop:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#03966a]">
+          <div className="text-center mb-16 tablet:mb-20">
+            <h2 className="text-4xl tablet:text-6xl font-bold mb-6 text-[#03966a]">
               Latest Insights
             </h2>
             <p className="text-xl leading-relaxed text-[#27393f] max-w-2xl mx-auto font-light">
@@ -212,7 +212,7 @@ export default function Blog() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-8 tablet:gap-12">
             {blogsData.map((blog) => (
               <Link
                 to={`/blog/${blog.id}`}
@@ -234,7 +234,7 @@ export default function Blog() {
                 </div>
 
                 {/* Content Body */}
-                <div className="p-8 md:p-10 flex flex-col grow">
+                <div className="p-8 tablet:p-10 flex flex-col grow">
                   <h3 className="text-2xl font-bold mb-4 text-[#03966a] group-hover:text-[#03966a] transition-colors leading-snug line-clamp-2">
                     {blog.title}
                   </h3>
